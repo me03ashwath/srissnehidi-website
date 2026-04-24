@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Contact — {{ site.name }}{% endblock %}
+{% block content %}
+<h1>Contact Us</h1>
+<p>Phone: {{ site.contact.phone }}</p>
+<p>WhatsApp: {{ site.contact.whatsapp }}</p>
+<p>Email: {{ site.contact.email }}</p>
+<p>{{ site.address.street }}, {{ site.address.area }}, {{ site.address.city }} — {{ site.address.pincode }}</p>
+<p>{{ site.hours.weekdays }}</p>
+<p>{{ site.hours.sunday }}</p>
+{% endblock %}

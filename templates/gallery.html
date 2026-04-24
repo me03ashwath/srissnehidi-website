@@ -1,0 +1,213 @@
+{% extends "base.html" %}
+
+{% block title %}Gallery — {{ site.name }}{% endblock %}
+
+{% block content %}
+
+<!-- Page Header -->
+<section class="bg-black text-white py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <p class="text-[#C9A84C] text-xs uppercase tracking-[0.3em] font-semibold mb-4">Our Work</p>
+    <h1 class="font-serif text-4xl sm:text-5xl font-bold">Gallery</h1>
+  </div>
+</section>
+
+<!-- Gallery Section -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Tab Bar -->
+    <div class="flex flex-wrap gap-2 mb-12 border-b border-gray-200 pb-4">
+      <button id="tab-certificates" onclick="showTab('certificates')"
+              class="tab-btn px-5 py-2.5 text-xs uppercase tracking-widest font-semibold transition-all duration-200 border border-gray-200"
+              style="background-color: #C9A84C; color: #000; border-color: #C9A84C;">
+        Certificates Issued
+      </button>
+      <button id="tab-students_work" onclick="showTab('students_work')"
+              class="tab-btn px-5 py-2.5 text-xs uppercase tracking-widest font-semibold transition-all duration-200 border border-gray-200 text-gray-600 hover:text-gray-900">
+        Students Work
+      </button>
+      <button id="tab-events" onclick="showTab('events')"
+              class="tab-btn px-5 py-2.5 text-xs uppercase tracking-widest font-semibold transition-all duration-200 border border-gray-200 text-gray-600 hover:text-gray-900">
+        Events
+      </button>
+      <button id="tab-classes" onclick="showTab('classes')"
+              class="tab-btn px-5 py-2.5 text-xs uppercase tracking-widest font-semibold transition-all duration-200 border border-gray-200 text-gray-600 hover:text-gray-900">
+        Classes
+      </button>
+    </div>
+
+    <!-- Tab: Certificates Issued -->
+    <div id="content-certificates" class="tab-content">
+      {% if gallery.certificates %}
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for item in gallery.certificates %}
+        <div class="border border-gray-100 overflow-hidden shadow-sm hover:shadow-md transition-shadow group">
+          {% if item.media_type == 'image' and item.image %}
+            <div class="aspect-square overflow-hidden bg-gray-50">
+              <img src="{{ item.image.url }}" alt="{{ item.title }}"
+                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            </div>
+          {% elif item.media_type == 'video' and item.embed_url %}
+            <div class="aspect-video bg-black">
+              <iframe src="{{ item.embed_url }}" class="w-full h-full" frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen title="{{ item.title }}"></iframe>
+            </div>
+          {% else %}
+            <div class="aspect-square bg-gray-100 flex items-center justify-center">
+              <p class="text-gray-400 text-xs uppercase tracking-widest">Media unavailable</p>
+            </div>
+          {% endif %}
+          {% if item.caption %}
+          <div class="px-4 py-3 bg-white">
+            <p class="text-gray-600 text-xs">{{ item.caption }}</p>
+          </div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <div class="text-center py-20 border border-dashed border-gray-200">
+        <p class="text-gray-400 italic">No certificates posted yet.</p>
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- Tab: Students Work -->
+    <div id="content-students_work" class="tab-content" style="display:none;">
+      {% if gallery.students_work %}
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for item in gallery.students_work %}
+        <div class="border border-gray-100 overflow-hidden shadow-sm hover:shadow-md transition-shadow group">
+          {% if item.media_type == 'image' and item.image %}
+            <div class="aspect-square overflow-hidden bg-gray-50">
+              <img src="{{ item.image.url }}" alt="{{ item.title }}"
+                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            </div>
+          {% elif item.media_type == 'video' and item.embed_url %}
+            <div class="aspect-video bg-black">
+              <iframe src="{{ item.embed_url }}" class="w-full h-full" frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen title="{{ item.title }}"></iframe>
+            </div>
+          {% else %}
+            <div class="aspect-square bg-gray-100 flex items-center justify-center">
+              <p class="text-gray-400 text-xs uppercase tracking-widest">Media unavailable</p>
+            </div>
+          {% endif %}
+          {% if item.caption %}
+          <div class="px-4 py-3 bg-white">
+            <p class="text-gray-600 text-xs">{{ item.caption }}</p>
+          </div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <div class="text-center py-20 border border-dashed border-gray-200">
+        <p class="text-gray-400 italic">No student work posted yet.</p>
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- Tab: Events -->
+    <div id="content-events" class="tab-content" style="display:none;">
+      {% if gallery.events %}
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for item in gallery.events %}
+        <div class="border border-gray-100 overflow-hidden shadow-sm hover:shadow-md transition-shadow group">
+          {% if item.media_type == 'image' and item.image %}
+            <div class="aspect-square overflow-hidden bg-gray-50">
+              <img src="{{ item.image.url }}" alt="{{ item.title }}"
+                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            </div>
+          {% elif item.media_type == 'video' and item.embed_url %}
+            <div class="aspect-video bg-black">
+              <iframe src="{{ item.embed_url }}" class="w-full h-full" frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen title="{{ item.title }}"></iframe>
+            </div>
+          {% else %}
+            <div class="aspect-square bg-gray-100 flex items-center justify-center">
+              <p class="text-gray-400 text-xs uppercase tracking-widest">Media unavailable</p>
+            </div>
+          {% endif %}
+          {% if item.caption %}
+          <div class="px-4 py-3 bg-white">
+            <p class="text-gray-600 text-xs">{{ item.caption }}</p>
+          </div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <div class="text-center py-20 border border-dashed border-gray-200">
+        <p class="text-gray-400 italic">No event photos posted yet.</p>
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- Tab: Classes -->
+    <div id="content-classes" class="tab-content" style="display:none;">
+      {% if gallery.classes %}
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for item in gallery.classes %}
+        <div class="border border-gray-100 overflow-hidden shadow-sm hover:shadow-md transition-shadow group">
+          {% if item.media_type == 'image' and item.image %}
+            <div class="aspect-square overflow-hidden bg-gray-50">
+              <img src="{{ item.image.url }}" alt="{{ item.title }}"
+                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            </div>
+          {% elif item.media_type == 'video' and item.embed_url %}
+            <div class="aspect-video bg-black">
+              <iframe src="{{ item.embed_url }}" class="w-full h-full" frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen title="{{ item.title }}"></iframe>
+            </div>
+          {% else %}
+            <div class="aspect-square bg-gray-100 flex items-center justify-center">
+              <p class="text-gray-400 text-xs uppercase tracking-widest">Media unavailable</p>
+            </div>
+          {% endif %}
+          {% if item.caption %}
+          <div class="px-4 py-3 bg-white">
+            <p class="text-gray-600 text-xs">{{ item.caption }}</p>
+          </div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <div class="text-center py-20 border border-dashed border-gray-200">
+        <p class="text-gray-400 italic">No class photos posted yet.</p>
+      </div>
+      {% endif %}
+    </div>
+
+  </div>
+</section>
+
+<script>
+  var TABS = ['certificates', 'students_work', 'events', 'classes'];
+
+  function showTab(activeId) {
+    TABS.forEach(function (id) {
+      var btn = document.getElementById('tab-' + id);
+      var content = document.getElementById('content-' + id);
+      if (id === activeId) {
+        btn.style.backgroundColor = '#C9A84C';
+        btn.style.color = '#000';
+        btn.style.borderColor = '#C9A84C';
+        content.style.display = 'block';
+      } else {
+        btn.style.backgroundColor = '';
+        btn.style.color = '';
+        btn.style.borderColor = '';
+        content.style.display = 'none';
+      }
+    });
+  }
+</script>
+
+{% endblock %}

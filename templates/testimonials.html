@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Testimonials — {{ site.name }}{% endblock %}
+
+{% block content %}
+
+<!-- Page Header -->
+<section class="bg-black text-white py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <p class="text-[#C9A84C] text-xs uppercase tracking-[0.3em] font-semibold mb-4">Student Stories</p>
+    <h1 class="font-serif text-4xl sm:text-5xl font-bold">What Our Students Say</h1>
+  </div>
+</section>
+
+<!-- Video Testimonials -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    {% if video_testimonials %}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {% for t in video_testimonials %}
+      <div class="border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+        {% if t.embed_url %}
+        <div class="aspect-video bg-black">
+          <iframe src="{{ t.embed_url }}"
+                  class="w-full h-full"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  title="{{ t.student_name }}">
+          </iframe>
+        </div>
+        {% else %}
+        <div class="aspect-video bg-gray-100 flex items-center justify-center">
+          <p class="text-gray-400 text-xs uppercase tracking-widest">Video unavailable</p>
+        </div>
+        {% endif %}
+        <div class="px-5 py-4 bg-white border-t border-gray-100">
+          <p class="font-semibold text-gray-900 text-sm">{{ t.student_name }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center py-16">
+      <p class="text-gray-400 italic">No video testimonials yet. Check back soon!</p>
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<!-- Text Testimonials -->
+{% if text_testimonials %}
+<section class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center mb-14">
+      <p class="text-[#C9A84C] text-xs uppercase tracking-[0.3em] font-semibold mb-3">Reviews</p>
+      <h2 class="font-serif text-3xl font-bold text-gray-900">Student Reviews</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {% for t in text_testimonials %}
+      <div class="bg-white border border-gray-200 p-7 shadow-sm hover:shadow-md transition-shadow">
+        <p class="text-[#C9A84C] text-xl mb-3 tracking-wider">{{ t.star_string }}</p>
+        <p class="text-gray-700 italic leading-relaxed mb-5 text-sm">&ldquo;{{ t.quote }}&rdquo;</p>
+        <p class="font-bold text-gray-900 text-sm border-t border-gray-100 pt-4">{{ t.student_name }}</p>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+{% endif %}
+
+{% endblock %}
