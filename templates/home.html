@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}{{ site.name }} — {{ site.tagline }}{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+<section class="min-h-screen bg-black text-white flex items-center">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Left: Text -->
+      <div>
+        <p class="text-[#C9A84C] text-xs uppercase tracking-[0.3em] font-semibold mb-6">
+          Welcome to
+        </p>
+        <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+          {{ site.name }}
+        </h1>
+        <p class="text-xl md:text-2xl text-[#C9A84C] font-light italic mb-8">
+          {{ site.tagline }}
+        </p>
+        <p class="text-gray-400 text-base md:text-lg leading-relaxed mb-12 max-w-xl">
+          {{ site.about }}
+        </p>
+        <a href="{% url 'courses' %}"
+           class="inline-block bg-[#C9A84C] text-black text-xs font-bold uppercase tracking-[0.2em] px-10 py-4 hover:bg-white transition-colors duration-200">
+          Explore Courses
+        </a>
+      </div>
+
+      <!-- Right: Placeholder -->
+      <div class="flex items-center justify-center">
+        <div class="w-full aspect-video border border-gray-700 bg-gray-900 flex flex-col items-center justify-center gap-3">
+          <div class="w-12 h-0.5 bg-[#C9A84C]"></div>
+          <p class="text-gray-600 text-xs uppercase tracking-[0.3em] text-center px-8">
+            Institute Photo / Video here
+          </p>
+          <div class="w-12 h-0.5 bg-[#C9A84C]"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}

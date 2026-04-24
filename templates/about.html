@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}About Us — {{ site.name }}{% endblock %}
+
+{% block content %}
+
+<!-- Page Header -->
+<section class="bg-black text-white py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <p class="text-[#C9A84C] text-xs uppercase tracking-[0.3em] font-semibold mb-4">Who We Are</p>
+    <h1 class="font-serif text-4xl sm:text-5xl font-bold">About Us</h1>
+  </div>
+</section>
+
+<!-- Trainer Section -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+      <!-- Left: Trainer Info -->
+      <div>
+        <p class="text-[#C9A84C] text-xs uppercase tracking-[0.3em] font-semibold mb-4">
+          Meet Your Trainer
+        </p>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
+          {{ trainer.name }}
+        </h2>
+        <p class="text-gray-500 italic text-base mb-8 border-l-2 border-[#C9A84C] pl-4">
+          {{ trainer.title }}
+        </p>
+        <p class="text-gray-600 text-base leading-relaxed">
+          {{ trainer.bio }}
+        </p>
+      </div>
+
+      <!-- Right: Photo or Placeholder -->
+      <div class="flex justify-center lg:justify-end">
+        {% if trainer.photo %}
+          <img src="{{ trainer.photo }}" alt="{{ trainer.name }}"
+               class="w-full max-w-sm rounded-none shadow-2xl object-cover">
+        {% else %}
+          <div class="w-72 h-96 bg-gray-100 border border-gray-200 flex flex-col items-center justify-center gap-4">
+            <!-- Avatar placeholder -->
+            <div class="w-28 h-28 rounded-full bg-gray-200 flex items-center justify-center">
+              <svg class="w-14 h-14 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+              </svg>
+            </div>
+            <p class="text-gray-400 text-xs uppercase tracking-widest">Trainer Photo</p>
+          </div>
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}

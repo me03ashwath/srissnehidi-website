@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{{ site.name }}{% endblock %}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+
+<!-- Sticky Navbar -->
+<nav class="sticky top-0 z-50 bg-black shadow-xl">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+
+      <!-- Brand -->
+      <a href="{% url 'home' %}" class="font-serif font-bold text-base md:text-lg text-[#C9A84C] tracking-wide whitespace-nowrap shrink-0 mr-8">
+        {{ site.name }}
+      </a>
+
+      <!-- Desktop Nav -->
+      {% with n=request.resolver_match.url_name %}
+      <div class="hidden md:flex items-center space-x-7">
+        <a href="{% url 'home' %}"
+           class="text-xs uppercase tracking-widest font-medium transition-colors duration-200
+                  {% if n == 'home' %}text-[#C9A84C] border-b border-[#C9A84C] pb-0.5{% else %}text-gray-400 hover:text-[#C9A84C]{% endif %}">
+          Home
+        </a>
+        <a href="{% url 'about' %}"
+           class="text-xs uppercase tracking-widest font-medium transition-colors duration-200
+                  {% if n == 'about' %}text-[#C9A84C] border-b border-[#C9A84C] pb-0.5{% else %}text-gray-400 hover:text-[#C9A84C]{% endif %}">
+          About Us
+        </a>
+        <a href="{% url 'courses' %}"
+           class="text-xs uppercase tracking-widest font-medium transition-colors duration-200
+                  {% if n == 'courses' %}text-[#C9A84C] border-b border-[#C9A84C] pb-0.5{% else %}text-gray-400 hover:text-[#C9A84C]{% endif %}">
+          Courses
+        </a>
+        <a href="{% url 'testimonials' %}"
+           class="text-xs uppercase tracking-widest font-medium transition-colors duration-200
+                  {% if n == 'testimonials' %}text-[#C9A84C] border-b border-[#C9A84C] pb-0.5{% else %}text-gray-400 hover:text-[#C9A84C]{% endif %}">
+          Testimonials
+        </a>
+        <a href="{% url 'gallery' %}"
+           class="text-xs uppercase tracking-widest font-medium transition-colors duration-200
+                  {% if n == 'gallery' %}text-[#C9A84C] border-b border-[#C9A84C] pb-0.5{% else %}text-gray-400 hover:text-[#C9A84C]{% endif %}">
+          Gallery
+        </a>
+        <a href="{% url 'lets_connect' %}"
+           class="text-xs uppercase tracking-widest font-medium transition-colors duration-200
+                  {% if n == 'lets_connect' %}text-[#C9A84C] border-b border-[#C9A84C] pb-0.5{% else %}text-gray-400 hover:text-[#C9A84C]{% endif %}">
+          Let's Connect
+        </a>
+      </div>
+      {% endwith %}
+
+      <!-- Hamburger -->
+      <button id="hamburger" class="md:hidden text-gray-400 hover:text-[#C9A84C] transition-colors p-2" aria-label="Open menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-gray-800 bg-black">
+    {% with n=request.resolver_match.url_name %}
+    <div class="px-4 py-3 space-y-1">
+      <a href="{% url 'home' %}" class="block px-3 py-2.5 text-xs uppercase tracking-widest font-medium rounded {% if n == 'home' %}text-[#C9A84C]{% else %}text-gray-400 hover:text-[#C9A84C]{% endif %}">Home</a>
+      <a href="{% url 'about' %}" class="block px-3 py-2.5 text-xs uppercase tracking-widest font-medium rounded {% if n == 'about' %}text-[#C9A84C]{% else %}text-gray-400 hover:text-[#C9A84C]{% endif %}">About Us</a>
+      <a href="{% url 'courses' %}" class="block px-3 py-2.5 text-xs uppercase tracking-widest font-medium rounded {% if n == 'courses' %}text-[#C9A84C]{% else %}text-gray-400 hover:text-[#C9A84C]{% endif %}">Courses</a>
+      <a href="{% url 'testimonials' %}" class="block px-3 py-2.5 text-xs uppercase tracking-widest font-medium rounded {% if n == 'testimonials' %}text-[#C9A84C]{% else %}text-gray-400 hover:text-[#C9A84C]{% endif %}">Testimonials</a>
+      <a href="{% url 'gallery' %}" class="block px-3 py-2.5 text-xs uppercase tracking-widest font-medium rounded {% if n == 'gallery' %}text-[#C9A84C]{% else %}text-gray-400 hover:text-[#C9A84C]{% endif %}">Gallery</a>
+      <a href="{% url 'lets_connect' %}" class="block px-3 py-2.5 text-xs uppercase tracking-widest font-medium rounded {% if n == 'lets_connect' %}text-[#C9A84C]{% else %}text-gray-400 hover:text-[#C9A84C]{% endif %}">Let's Connect</a>
+    </div>
+    {% endwith %}
+  </div>
+</nav>
+
+<!-- Page Content -->
+<main>{% block content %}{% endblock %}</main>
+
+<!-- Footer -->
+<footer class="bg-black text-gray-500">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10 border-b border-gray-800">
+
+      <div>
+        <h3 class="text-[#C9A84C] font-serif font-bold text-base mb-3">{{ site.name }}</h3>
+        <p class="text-sm leading-relaxed italic text-gray-600">{{ site.tagline }}</p>
+      </div>
+
+      <div>
+        <h4 class="text-white text-xs uppercase tracking-widest font-semibold mb-4">Contact</h4>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="tel:{{ site.phone }}" class="hover:text-[#C9A84C] transition-colors">{{ site.phone }}</a>
+          </li>
+          <li>
+            <a href="https://wa.me/{{ site.whatsapp }}" class="hover:text-[#C9A84C] transition-colors">
+              WhatsApp
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-white text-xs uppercase tracking-widest font-semibold mb-4">Follow Us</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="{{ site.instagram }}" target="_blank" rel="noopener noreferrer" class="hover:text-[#C9A84C] transition-colors">Instagram</a></li>
+          <li><a href="{{ site.facebook }}" target="_blank" rel="noopener noreferrer" class="hover:text-[#C9A84C] transition-colors">Facebook</a></li>
+          <li><a href="{{ site.youtube }}" target="_blank" rel="noopener noreferrer" class="hover:text-[#C9A84C] transition-colors">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="text-center text-xs text-gray-700 pt-6">
+      &copy; {% now "Y" %} {{ site.name }}. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('hamburger').addEventListener('click', function () {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  });
+</script>
+
+</body>
+</html>

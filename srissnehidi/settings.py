@@ -1,4 +1,6 @@
+import os
 from pathlib import Path
+from urllib.parse import urlparse
 import dj_database_url
 from decouple import config
 
@@ -84,9 +86,17 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Media / Cloudinary
+# python-decouple does not write to os.environ, but the cloudinary SDK
+# auto-detects credentials only from os.environ['CLOUDINARY_URL'].
+_cloudinary_url = config('CLOUDINARY_URL')
+os.environ.setdefault('CLOUDINARY_URL', _cloudinary_url)
+
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+_cloudinary = urlparse(_cloudinary_url)
 CLOUDINARY_STORAGE = {
-    'CLOUDINARY_URL': config('CLOUDINARY_URL'),
+    'CLOUD_NAME': _cloudinary.hostname,
+    'API_KEY': _cloudinary.username,
+    'API_SECRET': _cloudinary.password,
 }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
