@@ -1,6 +1,6 @@
 SITE = {
     "name": "Sris Snehidi Fashion Institute",
-    "tagline": "Fashion is an art. We teach it.",
+    "tagline": "Sharpen Your Creativity To Shape Your Own Identity",
     "about": (
         "Sris Snehidi Fashion Institute has been nurturing creative talent and transforming "
         "passionate individuals into skilled fashion professionals. We offer hands-on training "

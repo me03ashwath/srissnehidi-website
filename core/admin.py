@@ -9,6 +9,6 @@ class TestimonialAdmin(admin.ModelAdmin):
 
 @admin.register(GalleryItem)
 class GalleryItemAdmin(admin.ModelAdmin):
-    list_display = ['title', 'category', 'media_type', 'uploaded_at']
+    list_display = ['title', 'category', 'media_type', 'order', 'uploaded_at']
     list_filter = ['category', 'media_type']
     search_fields = ['title', 'caption']

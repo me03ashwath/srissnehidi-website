@@ -15,7 +15,9 @@
     <div class="navbar-inner">
 
       <!-- Brand -->
-      <a href="{% url 'home' %}" class="navbar-brand">{{ site.name }}</a>
+      <a href="{% url 'home' %}">
+        <img src="{% static 'images/logo.png' %}" alt="Sris Snehidi Fashion Institute" style="height: 50px; width: auto;">
+      </a>
 
       <!-- Desktop Nav -->
       {% with n=request.resolver_match.url_name %}
