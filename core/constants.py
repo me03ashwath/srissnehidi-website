@@ -6,8 +6,8 @@ SITE = {
         "passionate individuals into skilled fashion professionals. We offer hands-on training "
         "in embroidery, design, and fashion business."
     ),
-    "phone": "+91 XXXXXXXXXX",
-    "whatsapp": "91XXXXXXXXXX",
+    "phone": "+91 9092518668",
+    "whatsapp": "919092518668",
     "instagram": "https://instagram.com/srissnehidi",
     "facebook": "https://facebook.com/srissnehidi",
     "youtube": "https://youtube.com/@srissnehidi",

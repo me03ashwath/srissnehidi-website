@@ -1,262 +1,198 @@
 {% extends "base.html" %}
-
 {% block title %}Courses — {{ site.name }}{% endblock %}
 
 {% block content %}
 
 <!-- Page Header -->
-<section class="bg-black text-white py-20">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <p class="text-[#C9A84C] text-xs uppercase tracking-[0.3em] font-semibold mb-4">Learn With Us</p>
-    <h1 class="font-serif text-4xl sm:text-5xl font-bold">Our Courses</h1>
+<section class="page-header">
+  <div class="container">
+    <p class="page-header-label">Learn With Us</p>
+    <h1 class="page-header-title">Our Courses</h1>
   </div>
 </section>
 
-<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-24">
+<div class="courses-wrapper">
 
   <!-- Section 1: Courses Provided -->
-  <section>
-    <h2 class="font-serif text-3xl font-bold text-center mb-12 relative">
-      <span class="relative inline-block">
-        Courses Provided
-        <span class="absolute -bottom-3 left-1/2 -translate-x-1/2 w-16 h-0.5 bg-[#C9A84C]"></span>
-      </span>
-    </h2>
+  <div class="courses-section">
+    <h2 class="section-heading">Courses Provided</h2>
 
     {% if courses.regular %}
-      <div class="space-y-10">
-        {% for course in courses.regular %}
-        <div class="border border-gray-200 shadow-lg overflow-hidden">
-          <!-- Card Header -->
-          <div class="bg-black px-8 py-6 flex flex-wrap items-center justify-between gap-4">
-            <h3 class="font-serif text-xl sm:text-2xl font-bold text-white">{{ course.name }}</h3>
-            {% if course.badge %}
-            <span class="bg-[#C9A84C] text-black text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shrink-0">
-              {{ course.badge }}
-            </span>
-            {% endif %}
-          </div>
-
-          <!-- Card Body -->
-          <div class="p-8 space-y-8 bg-white">
-
-            <!-- Nature -->
-            <div>
-              <h4 class="text-xs uppercase tracking-widest font-semibold text-[#C9A84C] mb-4">Course Nature</h4>
-              <ul class="space-y-2">
-                {% for item in course.nature %}
-                <li class="flex items-start gap-3 text-gray-700">
-                  <span class="text-[#C9A84C] font-bold mt-0.5 shrink-0">&rsaquo;</span>
-                  <span>{{ item }}</span>
-                </li>
-                {% endfor %}
-              </ul>
-            </div>
-
-            <!-- Duration & Timings -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2 border-t border-gray-100">
-              <div>
-                <h4 class="text-xs uppercase tracking-widest font-semibold text-[#C9A84C] mb-2">Duration</h4>
-                <p class="text-gray-700">{{ course.duration }}</p>
-              </div>
-              <div>
-                <h4 class="text-xs uppercase tracking-widest font-semibold text-[#C9A84C] mb-2">Timings</h4>
-                <p class="text-gray-700">{{ course.timings }}</p>
-              </div>
-            </div>
-
-            <!-- Syllabus -->
-            <div class="pt-2 border-t border-gray-100">
-              <h4 class="text-xs uppercase tracking-widest font-semibold text-[#C9A84C] mb-4">Syllabus</h4>
-              <ol class="space-y-2 list-decimal list-inside">
-                {% for item in course.syllabus %}
-                <li class="text-gray-700">{{ item }}</li>
-                {% endfor %}
-              </ol>
-            </div>
-
-            <!-- Free Offer -->
-            {% if course.free_offer %}
-            <div class="bg-[#C9A84C] bg-opacity-10 border-l-4 border-[#C9A84C] px-6 py-4">
-              <p class="text-sm text-gray-800">
-                <span class="font-bold text-[#C9A84C] uppercase tracking-widest text-xs block mb-1">Free Gift Included</span>
-                {{ course.free_offer }}
-              </p>
-            </div>
-            {% endif %}
-
-            <!-- Fee -->
-            <div class="pt-2 border-t border-gray-100 flex flex-wrap items-center gap-4">
-              <div>
-                <p class="text-xs uppercase tracking-widest text-gray-400 mb-1">Original Fee</p>
-                <p class="text-gray-400 line-through text-xl">&#8377;{{ course.original_fee }}</p>
-              </div>
-              <div class="w-px h-10 bg-gray-200 hidden sm:block"></div>
-              <div>
-                <p class="text-xs uppercase tracking-widest text-gray-400 mb-1">Offer Fee</p>
-                <p class="text-[#C9A84C] text-3xl font-bold font-serif">&#8377;{{ course.offer_fee }}</p>
-              </div>
-            </div>
-
-            <!-- CTA -->
-            <div>
-              <a href="{% url 'lets_connect' %}"
-                 class="inline-block bg-[#C9A84C] text-black text-xs font-bold uppercase tracking-[0.2em] px-10 py-3 hover:bg-black hover:text-[#C9A84C] border border-[#C9A84C] transition-all duration-200">
-                Contact Us
-              </a>
-            </div>
-
-          </div>
+      {% for course in courses.regular %}
+      <div class="course-card">
+        <div class="course-card-header">
+          <h3 class="course-card-title">{{ course.name }}</h3>
+          {% if course.badge %}
+          <span class="course-badge">{{ course.badge }}</span>
+          {% endif %}
         </div>
-        {% endfor %}
+        <div class="course-card-body">
+
+          <div class="course-row">
+            <p class="course-label">Course Nature</p>
+            <ul class="course-nature-list">
+              {% for item in course.nature %}
+              <li class="course-nature-item">
+                <span class="course-nature-bullet">&rsaquo;</span>
+                <span>{{ item }}</span>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <div class="course-row">
+            <div class="course-detail-grid">
+              <div>
+                <p class="course-label">Duration</p>
+                <p class="course-detail-value">{{ course.duration }}</p>
+              </div>
+              <div>
+                <p class="course-label">Timings</p>
+                <p class="course-detail-value">{{ course.timings }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="course-row">
+            <p class="course-label">Syllabus</p>
+            <ol class="course-syllabus">
+              {% for item in course.syllabus %}
+              <li>{{ item }}</li>
+              {% endfor %}
+            </ol>
+          </div>
+
+          {% if course.free_offer %}
+          <div class="course-row">
+            <div class="course-free-offer">
+              <span class="course-free-offer-title">Free Gift Included</span>
+              <p class="course-free-offer-text">{{ course.free_offer }}</p>
+            </div>
+          </div>
+          {% endif %}
+
+          <div class="course-row">
+            <div class="course-fee-row">
+              <div>
+                <p class="course-fee-label">Original Fee</p>
+                <p class="course-fee-original">&#8377;{{ course.original_fee }}</p>
+              </div>
+              <div class="course-fee-divider"></div>
+              <div>
+                <p class="course-fee-label">Offer Fee</p>
+                <p class="course-fee-offer">&#8377;{{ course.offer_fee }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="course-row">
+            <a href="{% url 'lets_connect' %}" class="course-cta-btn">Contact Us</a>
+          </div>
+
+        </div>
       </div>
+      {% endfor %}
     {% endif %}
-  </section>
+  </div>
 
   <!-- Section 2: Upcoming Courses -->
-  <section>
-    <h2 class="font-serif text-3xl font-bold text-center mb-12 relative">
-      <span class="relative inline-block">
-        Upcoming Courses
-        <span class="absolute -bottom-3 left-1/2 -translate-x-1/2 w-16 h-0.5 bg-[#C9A84C]"></span>
-      </span>
-    </h2>
+  <div class="courses-section">
+    <h2 class="section-heading">Upcoming Courses</h2>
     {% if courses.upcoming %}
-      <div class="space-y-10">
-        {% for course in courses.upcoming %}
-        <div class="border border-gray-200 shadow-lg overflow-hidden">
-          <div class="bg-black px-8 py-6 flex flex-wrap items-center justify-between gap-4">
-            <h3 class="font-serif text-xl sm:text-2xl font-bold text-white">{{ course.name }}</h3>
-            {% if course.badge %}
-            <span class="bg-[#C9A84C] text-black text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shrink-0">{{ course.badge }}</span>
-            {% endif %}
+      {% for course in courses.upcoming %}
+      <div class="course-card">
+        <div class="course-card-header">
+          <h3 class="course-card-title">{{ course.name }}</h3>
+          {% if course.badge %}<span class="course-badge">{{ course.badge }}</span>{% endif %}
+        </div>
+        <div class="course-card-body">
+          <div class="course-row">
+            <p class="course-label">Course Nature</p>
+            <ul class="course-nature-list">
+              {% for item in course.nature %}
+              <li class="course-nature-item">
+                <span class="course-nature-bullet">&rsaquo;</span><span>{{ item }}</span>
+              </li>
+              {% endfor %}
+            </ul>
           </div>
-          <div class="p-8 space-y-8 bg-white">
-            <div>
-              <h4 class="text-xs uppercase tracking-widest font-semibold text-[#C9A84C] mb-4">Course Nature</h4>
-              <ul class="space-y-2">
-                {% for item in course.nature %}
-                <li class="flex items-start gap-3 text-gray-700">
-                  <span class="text-[#C9A84C] font-bold mt-0.5 shrink-0">&rsaquo;</span>
-                  <span>{{ item }}</span>
-                </li>
-                {% endfor %}
-              </ul>
+          <div class="course-row">
+            <div class="course-detail-grid">
+              <div><p class="course-label">Duration</p><p class="course-detail-value">{{ course.duration }}</p></div>
+              <div><p class="course-label">Timings</p><p class="course-detail-value">{{ course.timings }}</p></div>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2 border-t border-gray-100">
-              <div>
-                <h4 class="text-xs uppercase tracking-widest font-semibold text-[#C9A84C] mb-2">Duration</h4>
-                <p class="text-gray-700">{{ course.duration }}</p>
-              </div>
-              <div>
-                <h4 class="text-xs uppercase tracking-widest font-semibold text-[#C9A84C] mb-2">Timings</h4>
-                <p class="text-gray-700">{{ course.timings }}</p>
-              </div>
+          </div>
+          {% if course.syllabus %}
+          <div class="course-row">
+            <p class="course-label">Syllabus</p>
+            <ol class="course-syllabus">{% for item in course.syllabus %}<li>{{ item }}</li>{% endfor %}</ol>
+          </div>
+          {% endif %}
+          {% if course.free_offer %}
+          <div class="course-row">
+            <div class="course-free-offer">
+              <span class="course-free-offer-title">Free Gift Included</span>
+              <p class="course-free-offer-text">{{ course.free_offer }}</p>
             </div>
-            {% if course.syllabus %}
-            <div class="pt-2 border-t border-gray-100">
-              <h4 class="text-xs uppercase tracking-widest font-semibold text-[#C9A84C] mb-4">Syllabus</h4>
-              <ol class="space-y-2 list-decimal list-inside">
-                {% for item in course.syllabus %}
-                <li class="text-gray-700">{{ item }}</li>
-                {% endfor %}
-              </ol>
+          </div>
+          {% endif %}
+          {% if course.original_fee %}
+          <div class="course-row">
+            <div class="course-fee-row">
+              <div><p class="course-fee-label">Original Fee</p><p class="course-fee-original">&#8377;{{ course.original_fee }}</p></div>
+              <div class="course-fee-divider"></div>
+              <div><p class="course-fee-label">Offer Fee</p><p class="course-fee-offer">&#8377;{{ course.offer_fee }}</p></div>
             </div>
-            {% endif %}
-            {% if course.free_offer %}
-            <div class="bg-[#C9A84C] bg-opacity-10 border-l-4 border-[#C9A84C] px-6 py-4">
-              <p class="text-sm text-gray-800">
-                <span class="font-bold text-[#C9A84C] uppercase tracking-widest text-xs block mb-1">Free Gift Included</span>
-                {{ course.free_offer }}
-              </p>
-            </div>
-            {% endif %}
-            {% if course.original_fee %}
-            <div class="pt-2 border-t border-gray-100 flex flex-wrap items-center gap-4">
-              <div>
-                <p class="text-xs uppercase tracking-widest text-gray-400 mb-1">Original Fee</p>
-                <p class="text-gray-400 line-through text-xl">&#8377;{{ course.original_fee }}</p>
-              </div>
-              <div class="w-px h-10 bg-gray-200 hidden sm:block"></div>
-              <div>
-                <p class="text-xs uppercase tracking-widest text-gray-400 mb-1">Offer Fee</p>
-                <p class="text-[#C9A84C] text-3xl font-bold font-serif">&#8377;{{ course.offer_fee }}</p>
-              </div>
-            </div>
-            {% endif %}
-            <div>
-              <a href="{% url 'lets_connect' %}"
-                 class="inline-block bg-[#C9A84C] text-black text-xs font-bold uppercase tracking-[0.2em] px-10 py-3 hover:bg-black hover:text-[#C9A84C] border border-[#C9A84C] transition-all duration-200">
-                Contact Us
-              </a>
-            </div>
+          </div>
+          {% endif %}
+          <div class="course-row">
+            <a href="{% url 'lets_connect' %}" class="course-cta-btn">Contact Us</a>
           </div>
         </div>
-        {% endfor %}
       </div>
+      {% endfor %}
     {% else %}
-      <div class="border border-dashed border-gray-300 py-16 text-center">
-        <p class="text-gray-400 italic text-base">New courses coming soon. Stay tuned!</p>
-      </div>
+      <div class="courses-empty">New courses coming soon. Stay tuned!</div>
     {% endif %}
-  </section>
+  </div>
 
   <!-- Section 3: Upcoming Workshops -->
-  <section>
-    <h2 class="font-serif text-3xl font-bold text-center mb-12 relative">
-      <span class="relative inline-block">
-        Upcoming Workshops
-        <span class="absolute -bottom-3 left-1/2 -translate-x-1/2 w-16 h-0.5 bg-[#C9A84C]"></span>
-      </span>
-    </h2>
+  <div class="courses-section">
+    <h2 class="section-heading">Upcoming Workshops</h2>
     {% if courses.workshop %}
-      <div class="space-y-10">
-        {% for course in courses.workshop %}
-        <div class="border border-gray-200 shadow-lg overflow-hidden">
-          <div class="bg-black px-8 py-6 flex flex-wrap items-center justify-between gap-4">
-            <h3 class="font-serif text-xl sm:text-2xl font-bold text-white">{{ course.name }}</h3>
-            {% if course.badge %}
-            <span class="bg-[#C9A84C] text-black text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shrink-0">{{ course.badge }}</span>
-            {% endif %}
+      {% for course in courses.workshop %}
+      <div class="course-card">
+        <div class="course-card-header">
+          <h3 class="course-card-title">{{ course.name }}</h3>
+          {% if course.badge %}<span class="course-badge">{{ course.badge }}</span>{% endif %}
+        </div>
+        <div class="course-card-body">
+          <div class="course-row">
+            <p class="course-label">Workshop Details</p>
+            <ul class="course-nature-list">
+              {% for item in course.nature %}
+              <li class="course-nature-item">
+                <span class="course-nature-bullet">&rsaquo;</span><span>{{ item }}</span>
+              </li>
+              {% endfor %}
+            </ul>
           </div>
-          <div class="p-8 space-y-8 bg-white">
-            <div>
-              <h4 class="text-xs uppercase tracking-widest font-semibold text-[#C9A84C] mb-4">Workshop Details</h4>
-              <ul class="space-y-2">
-                {% for item in course.nature %}
-                <li class="flex items-start gap-3 text-gray-700">
-                  <span class="text-[#C9A84C] font-bold mt-0.5 shrink-0">&rsaquo;</span>
-                  <span>{{ item }}</span>
-                </li>
-                {% endfor %}
-              </ul>
+          <div class="course-row">
+            <div class="course-detail-grid">
+              <div><p class="course-label">Duration</p><p class="course-detail-value">{{ course.duration }}</p></div>
+              <div><p class="course-label">Timings</p><p class="course-detail-value">{{ course.timings }}</p></div>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2 border-t border-gray-100">
-              <div>
-                <h4 class="text-xs uppercase tracking-widest font-semibold text-[#C9A84C] mb-2">Duration</h4>
-                <p class="text-gray-700">{{ course.duration }}</p>
-              </div>
-              <div>
-                <h4 class="text-xs uppercase tracking-widest font-semibold text-[#C9A84C] mb-2">Timings</h4>
-                <p class="text-gray-700">{{ course.timings }}</p>
-              </div>
-            </div>
-            <div>
-              <a href="{% url 'lets_connect' %}"
-                 class="inline-block bg-[#C9A84C] text-black text-xs font-bold uppercase tracking-[0.2em] px-10 py-3 hover:bg-black hover:text-[#C9A84C] border border-[#C9A84C] transition-all duration-200">
-                Contact Us
-              </a>
-            </div>
+          </div>
+          <div class="course-row">
+            <a href="{% url 'lets_connect' %}" class="course-cta-btn">Contact Us</a>
           </div>
         </div>
-        {% endfor %}
       </div>
+      {% endfor %}
     {% else %}
-      <div class="border border-dashed border-gray-300 py-16 text-center">
-        <p class="text-gray-400 italic text-base">New workshops coming soon. Stay tuned!</p>
-      </div>
+      <div class="courses-empty">New workshops coming soon. Stay tuned!</div>
     {% endif %}
-  </section>
+  </div>
 
 </div>
 {% endblock %}
