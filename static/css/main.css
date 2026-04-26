@@ -35,6 +35,84 @@ img {
 }
 
 /* ============================================================
+   Hero Slideshow
+   ============================================================ */
+.slideshow {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: #1A1A1A;
+}
+
+.slideshow-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.slideshow-slide.active {
+  opacity: 1;
+}
+
+.slideshow-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  width: 2.75rem;
+  height: 2.75rem;
+  font-size: 2rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: background-color 0.2s ease;
+}
+
+.slideshow-arrow:hover {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.slideshow-arrow-prev { left: 0.75rem; }
+.slideshow-arrow-next { right: 0.75rem; }
+
+.slideshow-dots {
+  position: absolute;
+  bottom: 0.875rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.slideshow-dot {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 0;
+  transition: background-color 0.2s ease;
+}
+
+.slideshow-dot.active {
+  background: #C2185B;
+}
+
+/* ============================================================
    Layout Container
    ============================================================ */
 .container {
@@ -54,6 +132,12 @@ img {
 /* ============================================================
    Navbar
    ============================================================ */
+/* img.logo {
+    background: white;
+    padding: 4px 10px;
+    border-radius: 6px;
+} */
+
 .navbar {
   position: sticky;
   top: 0;
@@ -188,14 +272,14 @@ font-weight: 700;
    Hero (Home page)
    ============================================================ */
 .hero {
-  min-height: 100vh;
+  min-height: 80vh;
   background-color: #880E4F;
   display: flex;
   align-items: center;
 }
 
 .hero-body {
-  padding: 6rem 0;
+  padding: 2rem 0;
   width: 100%;
 }
 
@@ -287,33 +371,6 @@ font-size: 2.25rem;
   justify-content: center;
 }
 
-.hero-placeholder-box {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background-color: rgba(0, 0, 0, 0.25);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-}
-
-.hero-divider {
-  width: 3rem;
-  height: 2px;
-  background-color: #F8BBD0;
-}
-
-.hero-placeholder-text {
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
-  text-align: center;
-  padding: 0 2rem;
-}
-
 /* ============================================================
    Page Header (About, Let's Connect, Courses, etc.)
    ============================================================ */
@@ -347,7 +404,7 @@ font-size: 2.25rem;
    About Section
    ============================================================ */
 .about-section {
-  padding: 5rem 0;
+  padding: 1.5rem 0;
   background-color: #FFF5F7;
 }
 
@@ -452,7 +509,7 @@ font-size: 1.875rem;
    Let's Connect Section
    ============================================================ */
 .connect-section {
-  padding: 6rem 0;
+  padding: 3rem 0;
   background-color: #FFF5F7;
 }
 
@@ -577,7 +634,7 @@ font-size: 1.875rem;
 }
 
 .footer-inner {
-  padding: 3.5rem 0;
+  padding: 2.5rem 0;
 }
 
 .footer-grid {
@@ -639,13 +696,28 @@ font-weight: 700;
   padding-top: 1.5rem;
 }
 
+.social-icon {
+  width: 18px;              /* slightly bigger = bolder look */
+  height: 18px;
+  margin-right: 8px;
+  vertical-align: middle;
+
+  filter: brightness(0) invert(1);  /* 🔥 turns icon WHITE */
+}
+
+.footer-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 /* ============================================================
    Courses Page
    ============================================================ */
 .courses-wrapper {
   max-width: 64rem;
   margin: 0 auto;
-  padding: 5rem 1rem;
+  padding: 2rem 1rem;
 }
 
 @media (min-width: 640px) {
