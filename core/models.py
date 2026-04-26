@@ -42,9 +42,10 @@ class GalleryItem(models.Model):
     youtube_url = models.URLField(blank=True, null=True)
     caption = models.CharField(max_length=300, blank=True, null=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
+    order = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return f"{self.title} — {self.category}"
 
     class Meta:
-        ordering = ['-uploaded_at']
+        ordering = ['order', '-uploaded_at']
