@@ -457,7 +457,7 @@ font-size: 1.875rem;
 }
 
 .connect-inner {
-  max-width: 48rem;
+  max-width: 72rem;
   margin: 0 auto;
   padding: 0 1rem;
 }
@@ -478,7 +478,7 @@ font-size: 1.875rem;
 }
 
 @media (min-width: 768px) {
-  .connect-cards { grid-template-columns: 1fr 1fr; }
+  .connect-cards { grid-template-columns: 1fr 1fr 1fr; }
 }
 
 .connect-card {
@@ -508,6 +508,20 @@ font-size: 1.875rem;
 
 .connect-card.whatsapp:hover {
   background-color: #1B5E38;
+}
+
+.connect-card.location {
+  background-color: #880E4F;
+}
+
+.connect-card.location:hover {
+  background-color: #6a0b3d;
+}
+
+.connect-card.location .connect-card-icon svg {
+  color: #fff;
+  fill: none;
+  stroke: currentColor;
 }
 
 .connect-card-icon {
@@ -542,7 +556,7 @@ font-size: 1.875rem;
 }
 
 .connect-card-value {
-  font-size: 1.125rem;
+  font-size: .90rem;
   font-weight: 700;
   color: #fff;
 }
