@@ -24,6 +24,10 @@ body {
   line-height: 1.5;
 }
 
+p {
+  text-align: justify;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -299,14 +303,20 @@ font-weight: 700;
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 40px;
+  gap: 24px;
   align-items: start;
 }
 
 @media (min-width: 1024px) {
   .hero-grid {
-    grid-template-columns: 1.5fr 1fr;
-    gap: 40px;
+    grid-template-columns: 32rem 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .hero-grid > div:first-child {
+    grid-column: 2;
+    grid-row: 1;
   }
 }
 
@@ -352,7 +362,6 @@ font-size: 2.25rem;
   font-size: 1rem;
   line-height: 1.75;
   margin-bottom: 8px;
-  max-width: 36rem;
 }
 
 @media (min-width: 768px) {
@@ -385,11 +394,14 @@ font-size: 2.25rem;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  margin-top: 0;
 }
 
 @media (min-width: 1024px) {
-  .hero-placeholder { margin-top: 300px; }
+  .hero-placeholder {
+    grid-column: 1;
+    grid-row: 1;
+    margin-top: 18rem;
+  }
 }
 
 /* ============================================================
