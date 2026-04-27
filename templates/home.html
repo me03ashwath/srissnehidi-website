@@ -9,19 +9,19 @@
     <div class="hero-body">
       <div class="hero-grid">
 
-        <!-- Left: Text -->
+        <!-- Left: Institute name, tagline, about -->
         <div>
           <p class="hero-label">Welcome to</p>
           <h1 class="hero-title">{{ site.name }}</h1>
           <p class="hero-tagline">{{ site.tagline }}</p>
-          <p class="hero-description">{{ site.about }}</p>
-          <a href="{% url 'courses' %}" class="btn-primary">Explore Courses</a>
+          {% for para in site.about %}<p class="hero-description">{{ para }}</p>{% endfor %}
+          <a href="{% url 'courses' %}" class="btn-primary" style="margin-top:1.5rem;display:inline-block;">Explore Courses</a>
         </div>
 
         <!-- Right: Slideshow -->
         <div class="hero-placeholder">
           <div class="slideshow" id="heroSlideshow">
-            <img class="slideshow-slide active" src="https://res.cloudinary.com/dmvdowhru/image/upload/1_hbrfzx" alt="">
+            <img class="slideshow-slide active" src="https://res.cloudinary.com/dmvdowhru/image/upload/1_bwxtor.jpg" alt="">
             <img class="slideshow-slide" src="https://res.cloudinary.com/dmvdowhru/image/upload/2_jc4dq2" alt="">
             <img class="slideshow-slide" src="https://res.cloudinary.com/dmvdowhru/image/upload/3_lxx20h" alt="">
             <img class="slideshow-slide" src="https://res.cloudinary.com/dmvdowhru/image/upload/4_noqbfg" alt="">
@@ -39,6 +39,104 @@
         </div>
 
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose Sri's Snehidi — full-width section below hero -->
+<section class="why-choose-section">
+  <div class="container">
+    <h2 class="why-choose-section-title">Why Choose Sri's Snehidi?</h2>
+    <div class="why-choose-cards">
+
+      <div class="why-choose-card">
+        <span class="why-choose-card-check">&#10004;</span>
+        <div>
+          <p class="why-choose-card-title">Experienced &amp; Trusted Training</p>
+          <p class="why-choose-card-desc">25+ years in fashion and 11+ years of dedicated teaching expertise</p>
+        </div>
+      </div>
+
+      <div class="why-choose-card">
+        <span class="why-choose-card-check">&#10004;</span>
+        <div>
+          <p class="why-choose-card-title">Updated Syllabus as per Industry Trends</p>
+          <p class="why-choose-card-desc">Course content is regularly updated to match current fashion trends and market needs</p>
+        </div>
+      </div>
+
+      <div class="why-choose-card">
+        <span class="why-choose-card-check">&#10004;</span>
+        <div>
+          <p class="why-choose-card-title">Simple &amp; Structured Learning</p>
+          <p class="why-choose-card-desc">Syllabus designed for easy understanding with step-by-step guidance</p>
+        </div>
+      </div>
+
+      <div class="why-choose-card">
+        <span class="why-choose-card-check">&#10004;</span>
+        <div>
+          <p class="why-choose-card-title">Quality Learning at an Affordable Price</p>
+          <p class="why-choose-card-desc">Ensures the right skills and guidance at an affordable price</p>
+        </div>
+      </div>
+
+      <div class="why-choose-card">
+        <span class="why-choose-card-check">&#10004;</span>
+        <div>
+          <p class="why-choose-card-title">Personalized Mentoring</p>
+          <p class="why-choose-card-desc">Individual attention to help every student learn with confidence</p>
+        </div>
+      </div>
+
+      <div class="why-choose-card">
+        <span class="why-choose-card-check">&#10004;</span>
+        <div>
+          <p class="why-choose-card-title">Practical-Focused Training</p>
+          <p class="why-choose-card-desc">Hands-on sessions with real-time garment creation and finishing</p>
+        </div>
+      </div>
+
+      <div class="why-choose-card">
+        <span class="why-choose-card-check">&#10004;</span>
+        <div>
+          <p class="why-choose-card-title">Beginner-Friendly Approach</p>
+          <p class="why-choose-card-desc">No prior experience needed — we guide you from basics to advanced</p>
+        </div>
+      </div>
+
+      <div class="why-choose-card">
+        <span class="why-choose-card-check">&#10004;</span>
+        <div>
+          <p class="why-choose-card-title">Business-Oriented Guidance</p>
+          <p class="why-choose-card-desc">Learn not just skills, but how to take your work into real earning opportunities</p>
+        </div>
+      </div>
+
+      <div class="why-choose-card">
+        <span class="why-choose-card-check">&#10004;</span>
+        <div>
+          <p class="why-choose-card-title">Safe &amp; Secure Ambiance</p>
+          <p class="why-choose-card-desc">CCTV-monitored environment ensuring comfort and safety for all students</p>
+        </div>
+      </div>
+
+      <div class="why-choose-card">
+        <span class="why-choose-card-check">&#10004;</span>
+        <div>
+          <p class="why-choose-card-title">Supportive Learning Environment</p>
+          <p class="why-choose-card-desc">Friendly and encouraging atmosphere that motivates you to grow</p>
+        </div>
+      </div>
+
+      <div class="why-choose-card">
+        <span class="why-choose-card-check">&#10004;</span>
+        <div>
+          <p class="why-choose-card-title">Proven Results</p>
+          <p class="why-choose-card-desc">300+ women trained, many successfully building their own identity</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

@@ -3,6 +3,234 @@
 
 {% block content %}
 
+<style>
+  .courses-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .courses-section-heading {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #880E4F;
+    margin: 2.5rem 0 3rem;
+    border-bottom: 2px solid #C2185B;
+    padding-bottom: 0.5rem;
+  }
+
+  .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .courses-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .course-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.09);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .course-card-content {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+  }
+
+  .course-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .course-card-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #880E4F;
+    margin: 0;
+  }
+
+  .course-card-banner {
+    background: #C2185B;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-align: center;
+    padding: 10px;
+    letter-spacing: 0.04em;
+    border-radius: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  .course-description {
+    color: #444;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .course-highlights {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .course-highlights li {
+    font-size: 0.92rem;
+    color: #333;
+  }
+
+  .course-syllabus-section h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #880E4F;
+    margin: 0 0 0.5rem;
+  }
+
+  .course-syllabus-list {
+    padding-left: 1.2rem;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .course-syllabus-list li {
+    font-size: 0.9rem;
+    color: #444;
+  }
+
+  .course-tiers {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .course-tier-card {
+    background: #fdf0f5;
+    border: 1px solid #f8bbd0;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+  }
+
+  .course-tier-name {
+    font-weight: 700;
+    color: #880E4F;
+    font-size: 0.92rem;
+    margin: 0 0 0.2rem;
+  }
+
+  .course-tier-detail {
+    font-size: 0.85rem;
+    color: #555;
+    margin: 0 0 0.2rem;
+  }
+
+  .course-tier-fee {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #2E7D52;
+    margin: 0;
+  }
+
+  .course-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .course-meta-row {
+    font-size: 0.9rem;
+    color: #444;
+  }
+
+  .course-meta-row strong {
+    color: #333;
+  }
+
+  .course-fee-display {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #2E7D52;
+    margin: 0;
+  }
+
+  .course-free-offer-box {
+    background: #880E4F;
+    color: #fff;
+    border-radius: 7px;
+    padding: 0.7rem 1rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  .course-note {
+    font-size: 0.82rem;
+    color: #777;
+    font-style: italic;
+    margin: 0;
+  }
+
+  .course-cta-btn {
+    display: block;
+    text-align: center;
+    background: #2E7D52;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.65rem 1rem;
+    border-radius: 7px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .course-cta-btn:hover {
+    background: #255e3e;
+    color: #fff;
+  }
+
+  .course-contact-btn {
+    display: block;
+    text-align: center;
+    background: #C2185B;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.65rem 1rem;
+    border-radius: 7px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .course-contact-btn:hover {
+    background: #880E4F;
+    color: #fff;
+  }
+
+  .courses-empty {
+    color: #888;
+    font-style: italic;
+    padding: 1rem 0;
+  }
+</style>
+
 <!-- Page Header -->
 <section class="page-header">
   <div class="container">
@@ -14,185 +242,207 @@
 <div class="courses-wrapper">
 
   <!-- Section 1: Courses Provided -->
-  <div class="courses-section">
-    <h2 class="section-heading">Courses Provided</h2>
+  <h2 class="courses-section-heading">Courses Provided</h2>
+  {% if courses.regular %}
+  <div class="courses-grid">
+    {% for course in courses.regular %}
+    <div class="course-card">
 
-    {% if courses.regular %}
-      {% for course in courses.regular %}
-      <div class="course-card">
-        <div class="course-card-header">
-          <h3 class="course-card-title">{{ course.name }}</h3>
-          {% if course.badge %}
-          <span class="course-badge">{{ course.badge }}</span>
-          {% endif %}
+      {% if course.badge %}<div class="course-card-banner">{{ course.badge }}</div>{% endif %}
+      <div class="course-card-content">
+
+        <h3 class="course-card-name">{{ course.name }}</h3>
+
+        <p class="course-description">{{ course.description }}</p>
+
+        {% if course.highlights %}
+        <ul class="course-highlights">
+          {% for item in course.highlights %}
+          <li>{{ item|cut:"🔊 " }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if course.syllabus %}
+        <div class="course-syllabus-section">
+          <h4>Course Syllabus</h4>
+          <ol class="course-syllabus-list">
+            {% for item in course.syllabus %}
+            <li>{{ item }}</li>
+            {% endfor %}
+          </ol>
         </div>
-        <div class="course-card-body">
+        {% endif %}
 
-          <div class="course-row">
-            <p class="course-label">Course Nature</p>
-            <ul class="course-nature-list">
-              {% for item in course.nature %}
-              <li class="course-nature-item">
-                <span class="course-nature-bullet">&rsaquo;</span>
-                <span>{{ item }}</span>
-              </li>
-              {% endfor %}
-            </ul>
+        {% if course.tiers %}
+        <div class="course-tiers">
+          {% for tier in course.tiers %}
+          <div class="course-tier-card">
+            <p class="course-tier-name">{{ tier.name }}</p>
+            <p class="course-tier-detail">{{ tier.detail }}</p>
+            <p class="course-tier-fee">{{ tier.fee }}</p>
           </div>
-
-          <div class="course-row">
-            <div class="course-detail-grid">
-              <div>
-                <p class="course-label">Duration</p>
-                <p class="course-detail-value">{{ course.duration }}</p>
-              </div>
-              <div>
-                <p class="course-label">Timings</p>
-                <p class="course-detail-value">{{ course.timings }}</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="course-row">
-            <p class="course-label">Syllabus</p>
-            <ol class="course-syllabus">
-              {% for item in course.syllabus %}
-              <li>{{ item }}</li>
-              {% endfor %}
-            </ol>
-          </div>
-
-          {% if course.free_offer %}
-          <div class="course-row">
-            <div class="course-free-offer">
-              <span class="course-free-offer-title">Free Gift Included</span>
-              <p class="course-free-offer-text">{{ course.free_offer }}</p>
-            </div>
-          </div>
-          {% endif %}
-
-          <div class="course-row">
-            <div class="course-fee-row">
-              <div>
-                <p class="course-fee-label">Original Fee</p>
-                <p class="course-fee-original">&#8377;{{ course.original_fee }}</p>
-              </div>
-              <div class="course-fee-divider"></div>
-              <div>
-                <p class="course-fee-label">Offer Fee</p>
-                <p class="course-fee-offer">&#8377;{{ course.offer_fee }}</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="course-row">
-            <a href="{% url 'lets_connect' %}" class="course-cta-btn">Contact Us</a>
-          </div>
-
+          {% endfor %}
         </div>
+        {% endif %}
+
+        <div class="course-meta">
+          <p class="course-meta-row"><strong>Duration:</strong> {{ course.duration }}</p>
+          <p class="course-meta-row"><strong>Schedule:</strong> {{ course.schedule }}</p>
+          <p class="course-meta-row"><strong>Timings:</strong> {{ course.timings }}</p>
+        </div>
+
+        <p class="course-fee-display">{{ course.fee }}</p>
+
+        {% if course.free_offer %}
+        <div class="course-free-offer-box">{{ course.free_offer }}</div>
+        {% endif %}
+
+        {% if course.note %}
+        <p class="course-note">{{ course.note }}</p>
+        {% endif %}
+
+        <a href="tel:{{ course.phone }}" class="course-cta-btn">{{ course.cta }}</a>
+
       </div>
-      {% endfor %}
-    {% endif %}
+    </div>
+    {% endfor %}
   </div>
+  {% endif %}
 
   <!-- Section 2: Upcoming Courses -->
-  <div class="courses-section">
-    <h2 class="section-heading">Upcoming Courses</h2>
-    {% if courses.upcoming %}
-      {% for course in courses.upcoming %}
-      <div class="course-card">
-        <div class="course-card-header">
-          <h3 class="course-card-title">{{ course.name }}</h3>
-          {% if course.badge %}<span class="course-badge">{{ course.badge }}</span>{% endif %}
+  <h2 class="courses-section-heading">Upcoming Courses</h2>
+  {% if courses.upcoming %}
+  <div class="courses-grid">
+    {% for course in courses.upcoming %}
+    <div class="course-card">
+
+      {% if course.badge %}<div class="course-card-banner">{{ course.badge }}</div>{% endif %}
+      <div class="course-card-content">
+
+        <h3 class="course-card-name">{{ course.name }}</h3>
+
+        <p class="course-description">{{ course.description }}</p>
+
+        {% if course.highlights %}
+        <ul class="course-highlights">
+          {% for item in course.highlights %}<li>{{ item|cut:"🔊 " }}</li>{% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if course.syllabus %}
+        <div class="course-syllabus-section">
+          <h4>Course Syllabus</h4>
+          <ol class="course-syllabus-list">
+            {% for item in course.syllabus %}<li>{{ item }}</li>{% endfor %}
+          </ol>
         </div>
-        <div class="course-card-body">
-          <div class="course-row">
-            <p class="course-label">Course Nature</p>
-            <ul class="course-nature-list">
-              {% for item in course.nature %}
-              <li class="course-nature-item">
-                <span class="course-nature-bullet">&rsaquo;</span><span>{{ item }}</span>
-              </li>
-              {% endfor %}
-            </ul>
+        {% endif %}
+
+        {% if course.tiers %}
+        <div class="course-tiers">
+          {% for tier in course.tiers %}
+          <div class="course-tier-card">
+            <p class="course-tier-name">{{ tier.name }}</p>
+            <p class="course-tier-detail">{{ tier.detail }}</p>
+            <p class="course-tier-fee">{{ tier.fee }}</p>
           </div>
-          <div class="course-row">
-            <div class="course-detail-grid">
-              <div><p class="course-label">Duration</p><p class="course-detail-value">{{ course.duration }}</p></div>
-              <div><p class="course-label">Timings</p><p class="course-detail-value">{{ course.timings }}</p></div>
-            </div>
-          </div>
-          {% if course.syllabus %}
-          <div class="course-row">
-            <p class="course-label">Syllabus</p>
-            <ol class="course-syllabus">{% for item in course.syllabus %}<li>{{ item }}</li>{% endfor %}</ol>
-          </div>
-          {% endif %}
-          {% if course.free_offer %}
-          <div class="course-row">
-            <div class="course-free-offer">
-              <span class="course-free-offer-title">Free Gift Included</span>
-              <p class="course-free-offer-text">{{ course.free_offer }}</p>
-            </div>
-          </div>
-          {% endif %}
-          {% if course.original_fee %}
-          <div class="course-row">
-            <div class="course-fee-row">
-              <div><p class="course-fee-label">Original Fee</p><p class="course-fee-original">&#8377;{{ course.original_fee }}</p></div>
-              <div class="course-fee-divider"></div>
-              <div><p class="course-fee-label">Offer Fee</p><p class="course-fee-offer">&#8377;{{ course.offer_fee }}</p></div>
-            </div>
-          </div>
-          {% endif %}
-          <div class="course-row">
-            <a href="{% url 'lets_connect' %}" class="course-cta-btn">Contact Us</a>
-          </div>
+          {% endfor %}
         </div>
+        {% endif %}
+
+        <div class="course-meta">
+          <p class="course-meta-row"><strong>Duration:</strong> {{ course.duration }}</p>
+          <p class="course-meta-row"><strong>Schedule:</strong> {{ course.schedule }}</p>
+          <p class="course-meta-row"><strong>Timings:</strong> {{ course.timings }}</p>
+        </div>
+
+        <p class="course-fee-display">{{ course.fee }}</p>
+
+        {% if course.free_offer %}
+        <div class="course-free-offer-box">{{ course.free_offer }}</div>
+        {% endif %}
+
+        {% if course.note %}
+        <p class="course-note">{{ course.note }}</p>
+        {% endif %}
+
+        <a href="tel:{{ course.phone }}" class="course-cta-btn">{{ course.cta }}</a>
+
       </div>
-      {% endfor %}
-    {% else %}
-      <div class="courses-empty">New courses coming soon. Stay tuned!</div>
-    {% endif %}
+    </div>
+    {% endfor %}
   </div>
+  {% else %}
+  <p class="courses-empty">New courses coming soon. Stay tuned!</p>
+  {% endif %}
 
   <!-- Section 3: Upcoming Workshops -->
-  <div class="courses-section">
-    <h2 class="section-heading">Upcoming Workshops</h2>
-    {% if courses.workshop %}
-      {% for course in courses.workshop %}
-      <div class="course-card">
-        <div class="course-card-header">
-          <h3 class="course-card-title">{{ course.name }}</h3>
-          {% if course.badge %}<span class="course-badge">{{ course.badge }}</span>{% endif %}
+  <h2 class="courses-section-heading">Upcoming Workshops</h2>
+  {% if courses.workshop %}
+  <div class="courses-grid">
+    {% for course in courses.workshop %}
+    <div class="course-card">
+
+      {% if course.badge %}<div class="course-card-banner">{{ course.badge }}</div>{% endif %}
+      <div class="course-card-content">
+
+        <h3 class="course-card-name">{{ course.name }}</h3>
+
+        <p class="course-description">{{ course.description }}</p>
+
+        {% if course.highlights %}
+        <ul class="course-highlights">
+          {% for item in course.highlights %}<li>{{ item|cut:"🔊 " }}</li>{% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if course.syllabus %}
+        <div class="course-syllabus-section">
+          <h4>Course Syllabus</h4>
+          <ol class="course-syllabus-list">
+            {% for item in course.syllabus %}<li>{{ item }}</li>{% endfor %}
+          </ol>
         </div>
-        <div class="course-card-body">
-          <div class="course-row">
-            <p class="course-label">Workshop Details</p>
-            <ul class="course-nature-list">
-              {% for item in course.nature %}
-              <li class="course-nature-item">
-                <span class="course-nature-bullet">&rsaquo;</span><span>{{ item }}</span>
-              </li>
-              {% endfor %}
-            </ul>
+        {% endif %}
+
+        {% if course.tiers %}
+        <div class="course-tiers">
+          {% for tier in course.tiers %}
+          <div class="course-tier-card">
+            <p class="course-tier-name">{{ tier.name }}</p>
+            <p class="course-tier-detail">{{ tier.detail }}</p>
+            <p class="course-tier-fee">{{ tier.fee }}</p>
           </div>
-          <div class="course-row">
-            <div class="course-detail-grid">
-              <div><p class="course-label">Duration</p><p class="course-detail-value">{{ course.duration }}</p></div>
-              <div><p class="course-label">Timings</p><p class="course-detail-value">{{ course.timings }}</p></div>
-            </div>
-          </div>
-          <div class="course-row">
-            <a href="{% url 'lets_connect' %}" class="course-cta-btn">Contact Us</a>
-          </div>
+          {% endfor %}
         </div>
+        {% endif %}
+
+        <div class="course-meta">
+          <p class="course-meta-row"><strong>Duration:</strong> {{ course.duration }}</p>
+          <p class="course-meta-row"><strong>Schedule:</strong> {{ course.schedule }}</p>
+          <p class="course-meta-row"><strong>Timings:</strong> {{ course.timings }}</p>
+        </div>
+
+        <p class="course-fee-display">{{ course.fee }}</p>
+
+        {% if course.free_offer %}
+        <div class="course-free-offer-box">{{ course.free_offer }}</div>
+        {% endif %}
+
+        {% if course.note %}
+        <p class="course-note">{{ course.note }}</p>
+        {% endif %}
+
+        <a href="tel:{{ course.phone }}" class="course-cta-btn">{{ course.cta }}</a>
+
       </div>
-      {% endfor %}
-    {% else %}
-      <div class="courses-empty">New workshops coming soon. Stay tuned!</div>
-    {% endif %}
+    </div>
+    {% endfor %}
   </div>
+  {% else %}
+  <p class="courses-empty">New workshops coming soon. Stay tuned!</p>
+  {% endif %}
 
 </div>
 {% endblock %}

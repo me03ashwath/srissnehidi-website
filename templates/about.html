@@ -22,7 +22,7 @@
         <p class="trainer-label">Meet Your Trainer</p>
         <h2 class="trainer-name">{{ trainer.name }}</h2>
         <p class="trainer-title">{{ trainer.title }}</p>
-        <p class="trainer-bio">{{ trainer.bio }}</p>
+        {% for para in trainer.bio %}<p class="trainer-bio">{{ para }}</p>{% endfor %}
       </div>
 
       <!-- Right: Photo or Placeholder -->
