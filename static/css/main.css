@@ -309,14 +309,9 @@ font-weight: 700;
 
 @media (min-width: 1024px) {
   .hero-grid {
-    grid-template-columns: 32rem 1fr;
+    grid-template-columns: 1fr 32rem;
     gap: 24px;
     align-items: start;
-  }
-
-  .hero-grid > div:first-child {
-    grid-column: 2;
-    grid-row: 1;
   }
 }
 
@@ -398,8 +393,6 @@ font-size: 2.25rem;
 
 @media (min-width: 1024px) {
   .hero-placeholder {
-    grid-column: 1;
-    grid-row: 1;
     margin-top: 18rem;
   }
 }
