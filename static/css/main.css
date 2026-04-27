@@ -496,12 +496,12 @@ font-size: 2.25rem;
 .about-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 4rem;
+  gap: 2rem;
   align-items: start;
 }
 
 @media (min-width: 1024px) {
-  .about-grid { grid-template-columns: 1fr 1fr; }
+  .about-grid { grid-template-columns: 1fr minmax(0, 26rem); gap: 2rem; }
 }
 
 .trainer-label {
@@ -537,6 +537,7 @@ font-size: 1.875rem;
   color: #1A1A1A;
   font-size: 1rem;
   line-height: 1.75;
+  margin-bottom: 1rem;
 }
 
 .trainer-photo-wrap {
@@ -545,7 +546,7 @@ font-size: 1.875rem;
 }
 
 @media (min-width: 1024px) {
-  .trainer-photo-wrap { justify-content: flex-end; }
+  .trainer-photo-wrap { justify-content: flex-start; }
 }
 
 .trainer-photo {
@@ -695,12 +696,14 @@ font-size: 1.875rem;
   font-weight: 600;
   margin-bottom: 0.75rem;
   color: rgba(255, 255, 255, 0.8);
+  text-align: center;
 }
 
 .connect-card-value {
   font-size: .90rem;
   font-weight: 700;
   color: #fff;
+  text-align: center;
 }
 
 .connect-note {

@@ -25,7 +25,7 @@ TRAINER = {
         "She is also a proud world record holder in Kalam's Book of Records for the \"Fastest Speller of Antonym Words in Backwords,\" which she achieved in her 40s. With this, she proves that age is not a barrier to learning or to excel.",
         "With a strong vision to empower women through skill-based learning, she focuses on practical training, perfection in finishing, and real-world application. She strongly believes that a friendly and supportive learning environment helps every woman unlock her potential and excel with confidence.",
     ],
-    "photo": None,
+    "photo": "https://res.cloudinary.com/dmvdowhru/image/upload/v1777301921/IMG-20240719-WA0045_1_gq3jyc.jpg"
 }
 
 COURSES = {
@@ -142,6 +142,36 @@ COURSES = {
             "syllabus": [],
         },
     ],
-    "upcoming": [],
-    "workshop": [],
+    "upcoming": [
+        {
+            "name": "Basic Fashion Designing",
+            "batch": "June 2026 Batch",
+            "offers": ["Early Bird Offer", "Akshayatritiya Offer"],
+        },
+        {
+            "name": "Fashion Designing",
+            "batch": "June 2026 Batch",
+            "offers": ["Early Bird Offer", "Akshayatritiya Offer"],
+        },
+        {
+            "name": "Aari Embroidery (Online)",
+            "batch": "",
+            "offers": ["Akshayatritiya Offer"],
+        },
+    ],
+    "workshop": [
+        {
+            "name": "Saree Pre-pleating",
+            "description": "A detailed hands-on practice session",
+        },
+        {
+            "name": "Fabric Painting",
+            "description": "An exclusive 4-day workshop for kids",
+        },
+        {
+            "name": "Decode Success — Your Way",
+            "description": "A free session for teens in your area",
+            "free": True,
+        },
+    ],
 }
