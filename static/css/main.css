@@ -386,15 +386,26 @@ font-size: 2.25rem;
    Hero Placeholder (image/video area)
    ============================================================ */
 .hero-placeholder {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+  display: block;
+  width: 100%;
 }
 
 @media (min-width: 1024px) {
   .hero-placeholder {
-    margin-top: 18rem;
+    margin-top: 4rem;
   }
+}
+
+.hero-video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 1rem;
+}
+
+.hero-video iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 /* ============================================================
