@@ -65,7 +65,8 @@ def gallery(request):
 
     gallery_dict = {
         "certificates": [],
-        "students_work": [],
+        "fashion_work": [],
+        "aari_work": [],
         "events": [],
         "classes": [],
     }

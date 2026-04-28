@@ -1252,6 +1252,18 @@ font-size: 1.875rem;
   background-color: #fce4ec;
 }
 
+.gallery-media-4x3 {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: #fce4ec;
+}
+
+.gallery-media-3x4 {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background-color: #fce4ec;
+}
+
 .gallery-media-vid {
   aspect-ratio: 16 / 9;
   background-color: #000;
