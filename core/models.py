@@ -26,7 +26,8 @@ class Testimonial(models.Model):
 class GalleryItem(models.Model):
     CATEGORY_CHOICES = [
         ('certificates', 'Certificates Issued'),
-        ('students_work', 'Students Work'),
+        ('fashion_work', "Fashion Student's Work"),
+        ('aari_work', "Aari Student's Work"),
         ('events', 'Events'),
         ('classes', 'Classes'),
     ]
