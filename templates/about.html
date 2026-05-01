@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}About Us — {{ site.name }}{% endblock %}
+
+{% block content %}
+
+<!-- Page Header -->
+<section class="page-header">
+  <div class="container">
+    <p class="page-header-label">Who We Are</p>
+    <h1 class="page-header-title">About Us</h1>
+  </div>
+</section>
+
+<!-- Trainer Section -->
+<section class="about-section">
+  <div class="container">
+    <div class="about-grid">
+
+      <!-- Left: Trainer Info -->
+      <div>
+        <p class="trainer-label">Meet Your Trainer</p>
+        <h2 class="trainer-name">{{ trainer.name }}</h2>
+        <p class="trainer-title">{{ trainer.title }}</p>
+        {% for para in trainer.bio %}<p class="trainer-bio">{{ para }}</p>{% endfor %}
+      </div>
+
+      <!-- Right: Photo or Placeholder -->
+      <div class="trainer-photo-wrap">
+        {% if trainer.photo %}
+          <img src="{{ trainer.photo }}" alt="{{ trainer.name }}" class="trainer-photo">
+        {% else %}
+          <div class="trainer-placeholder">
+            <div class="trainer-placeholder-icon">
+              <svg fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+              </svg>
+            </div>
+            <p class="trainer-placeholder-label">Trainer Photo</p>
+          </div>
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}

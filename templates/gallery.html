@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+{% block title %}Gallery — {{ site.name }}{% endblock %}
+
+{% block content %}
+
+<!-- Page Header -->
+<section class="page-header">
+  <div class="container">
+    <p class="page-header-label">Our Work</p>
+    <h1 class="page-header-title">Gallery</h1>
+  </div>
+</section>
+
+<!-- Gallery Section -->
+<section class="gallery-section">
+  <div class="container">
+
+    <!-- Tab Bar -->
+    <div class="gallery-tabs">
+      <button id="tab-certificates"  class="gallery-tab active" onclick="showTab('certificates')">Certificates Issued</button>
+      <button id="tab-fashion_work"  class="gallery-tab"        onclick="showTab('fashion_work')">Fashion Student's Work</button>
+      <button id="tab-aari_work"     class="gallery-tab"        onclick="showTab('aari_work')">Aari Student's Work</button>
+      <button id="tab-events"        class="gallery-tab"        onclick="showTab('events')">Events</button>
+      <button id="tab-classes"       class="gallery-tab"        onclick="showTab('classes')">Classes</button>
+    </div>
+
+    <!-- Tab: Certificates Issued -->
+    <div id="content-certificates" class="tab-content">
+      {% if gallery.certificates %}
+      <div class="gallery-grid">
+        {% for item in gallery.certificates %}
+        <div class="gallery-card">
+          {% if item.media_type == 'image' and item.image %}
+            <div class="gallery-media-sq">
+              <img src="{{ item.image.url }}" alt="{{ item.title }}" class="gallery-img">
+            </div>
+          {% elif item.media_type == 'video' and item.embed_url %}
+            <div class="gallery-media-vid">
+              <iframe src="{{ item.embed_url }}" frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen title="{{ item.title }}"></iframe>
+            </div>
+          {% else %}
+            <div class="gallery-media-unavailable">Media unavailable</div>
+          {% endif %}
+          {% if item.caption %}
+          <div class="gallery-caption">{{ item.caption }}</div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <div class="gallery-empty">No certificates posted yet.</div>
+      {% endif %}
+    </div>
+
+    <!-- Tab: Fashion Student's Work -->
+    <div id="content-fashion_work" class="tab-content" style="display:none;">
+      {% if gallery.fashion_work %}
+      <div class="gallery-grid">
+        {% for item in gallery.fashion_work %}
+        <div class="gallery-card">
+          {% if item.media_type == 'image' and item.image %}
+            <div class="gallery-media-4x3">
+              <img src="{{ item.image.url }}" alt="{{ item.title }}" class="gallery-img">
+            </div>
+          {% elif item.media_type == 'video' and item.embed_url %}
+            <div class="gallery-media-vid">
+              <iframe src="{{ item.embed_url }}" frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen title="{{ item.title }}"></iframe>
+            </div>
+          {% else %}
+            <div class="gallery-media-unavailable">Media unavailable</div>
+          {% endif %}
+          {% if item.caption %}<div class="gallery-caption">{{ item.caption }}</div>{% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <div class="gallery-empty">No fashion student work posted yet.</div>
+      {% endif %}
+    </div>
+
+    <!-- Tab: Aari Student's Work -->
+    <div id="content-aari_work" class="tab-content" style="display:none;">
+      {% if gallery.aari_work %}
+      <div class="gallery-grid">
+        {% for item in gallery.aari_work %}
+        <div class="gallery-card">
+          {% if item.media_type == 'image' and item.image %}
+            <div class="gallery-media-3x4">
+              <img src="{{ item.image.url }}" alt="{{ item.title }}" class="gallery-img">
+            </div>
+          {% elif item.media_type == 'video' and item.embed_url %}
+            <div class="gallery-media-vid">
+              <iframe src="{{ item.embed_url }}" frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen title="{{ item.title }}"></iframe>
+            </div>
+          {% else %}
+            <div class="gallery-media-unavailable">Media unavailable</div>
+          {% endif %}
+          {% if item.caption %}<div class="gallery-caption">{{ item.caption }}</div>{% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <div class="gallery-empty">No aari student work posted yet.</div>
+      {% endif %}
+    </div>
+
+    <!-- Tab: Events -->
+    <div id="content-events" class="tab-content" style="display:none;">
+      {% if gallery.events %}
+      <div class="gallery-grid">
+        {% for item in gallery.events %}
+        <div class="gallery-card">
+          {% if item.media_type == 'image' and item.image %}
+            <div class="gallery-media-sq">
+              <img src="{{ item.image.url }}" alt="{{ item.title }}" class="gallery-img">
+            </div>
+          {% elif item.media_type == 'video' and item.embed_url %}
+            <div class="gallery-media-vid">
+              <iframe src="{{ item.embed_url }}" frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen title="{{ item.title }}"></iframe>
+            </div>
+          {% else %}
+            <div class="gallery-media-unavailable">Media unavailable</div>
+          {% endif %}
+          {% if item.caption %}<div class="gallery-caption">{{ item.caption }}</div>{% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <div class="gallery-empty">No event photos posted yet.</div>
+      {% endif %}
+    </div>
+
+    <!-- Tab: Classes -->
+    <div id="content-classes" class="tab-content" style="display:none;">
+      {% if gallery.classes %}
+      <div class="gallery-grid">
+        {% for item in gallery.classes %}
+        <div class="gallery-card">
+          {% if item.media_type == 'image' and item.image %}
+            <div class="gallery-media-sq">
+              <img src="{{ item.image.url }}" alt="{{ item.title }}" class="gallery-img">
+            </div>
+          {% elif item.media_type == 'video' and item.embed_url %}
+            <div class="gallery-media-vid">
+              <iframe src="{{ item.embed_url }}" frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen title="{{ item.title }}"></iframe>
+            </div>
+          {% else %}
+            <div class="gallery-media-unavailable">Media unavailable</div>
+          {% endif %}
+          {% if item.caption %}<div class="gallery-caption">{{ item.caption }}</div>{% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <div class="gallery-empty">No class photos posted yet.</div>
+      {% endif %}
+    </div>
+
+  </div>
+</section>
+
+<script>
+  var TABS = ['certificates', 'fashion_work', 'aari_work', 'events', 'classes'];
+
+  function showTab(activeId) {
+    TABS.forEach(function(id) {
+      document.getElementById('tab-' + id).classList.toggle('active', id === activeId);
+      document.getElementById('content-' + id).style.display = id === activeId ? 'block' : 'none';
+    });
+  }
+</script>
+
+{% endblock %}

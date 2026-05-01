@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+
+{% block title %}{{ site.name }} — {{ site.tagline }}{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-body">
+      <div class="hero-grid">
+
+        <!-- Left: Institute name, tagline, about -->
+        <div>
+          <p class="hero-label">Welcome to</p>
+          <h1 class="hero-title">{{ site.name }}</h1>
+          <p class="hero-tagline">{{ site.tagline }}</p>
+          {% for para in site.about %}<p class="hero-description">{{ para }}</p>{% endfor %}
+          <a href="{% url 'courses' %}" class="btn-primary" style="margin-top:1.5rem;display:inline-block;">Explore Courses</a>
+        </div>
+
+        <!-- Right: YouTube video + Slideshow -->
+        <div class="hero-placeholder">
+
+          <!-- YouTube Video -->
+          <div class="hero-video">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/tfdATyCXXos?si=Z4eyGQV38A70kyYN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+
+          <div class="slideshow" id="heroSlideshow">
+            <img class="slideshow-slide active" src="https://res.cloudinary.com/dmvdowhru/image/upload/1_bwxtor.jpg" alt="">
+            <img class="slideshow-slide" src="https://res.cloudinary.com/dmvdowhru/image/upload/2_jc4dq2" alt="">
+            <img class="slideshow-slide" src="https://res.cloudinary.com/dmvdowhru/image/upload/3_lxx20h" alt="">
+            <img class="slideshow-slide" src="https://res.cloudinary.com/dmvdowhru/image/upload/4_noqbfg" alt="">
+            <img class="slideshow-slide" src="https://res.cloudinary.com/dmvdowhru/image/upload/5_mfi2xb" alt="">
+            <button class="slideshow-arrow slideshow-arrow-prev" aria-label="Previous slide">&#8249;</button>
+            <button class="slideshow-arrow slideshow-arrow-next" aria-label="Next slide">&#8250;</button>
+            <div class="slideshow-dots">
+              <button class="slideshow-dot active" aria-label="Slide 1"></button>
+              <button class="slideshow-dot" aria-label="Slide 2"></button>
+              <button class="slideshow-dot" aria-label="Slide 3"></button>
+              <button class="slideshow-dot" aria-label="Slide 4"></button>
+              <button class="slideshow-dot" aria-label="Slide 5"></button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose Sri's Snehidi — full-width section below hero -->
+<section class="why-choose-section">
+  <div class="container">
+    <h2 class="why-choose-section-title">Why Choose Sri's Snehidi?</h2>
+    <div class="why-choose-cards">
+
+      <div class="why-choose-card">
+        <span class="why-choose-card-check">&#10004;</span>
+        <div>
+          <p class="why-choose-card-title">Experienced &amp; Trusted Training</p>
+          <p class="why-choose-card-desc">25+ years in fashion and 11+ years of dedicated teaching expertise</p>
+        </div>
+      </div>
+
+      <div class="why-choose-card">
+        <span class="why-choose-card-check">&#10004;</span>
+        <div>
+          <p class="why-choose-card-title">Updated Syllabus as per Industry Trends</p>
+          <p class="why-choose-card-desc">Course content is regularly updated to match current fashion trends and market needs</p>
+        </div>
+      </div>
+
+      <div class="why-choose-card">
+        <span class="why-choose-card-check">&#10004;</span>
+        <div>
+          <p class="why-choose-card-title">Simple &amp; Structured Learning</p>
+          <p class="why-choose-card-desc">Syllabus designed for easy understanding with step-by-step guidance</p>
+        </div>
+      </div>
+
+      <div class="why-choose-card">
+        <span class="why-choose-card-check">&#10004;</span>
+        <div>
+          <p class="why-choose-card-title">Quality Learning at an Affordable Price</p>
+          <p class="why-choose-card-desc">Ensures the right skills and guidance at an affordable price</p>
+        </div>
+      </div>
+
+      <div class="why-choose-card">
+        <span class="why-choose-card-check">&#10004;</span>
+        <div>
+          <p class="why-choose-card-title">Personalized Mentoring</p>
+          <p class="why-choose-card-desc">Individual attention to help every student learn with confidence</p>
+        </div>
+      </div>
+
+      <div class="why-choose-card">
+        <span class="why-choose-card-check">&#10004;</span>
+        <div>
+          <p class="why-choose-card-title">Practical-Focused Training</p>
+          <p class="why-choose-card-desc">Hands-on sessions with real-time garment creation and finishing</p>
+        </div>
+      </div>
+
+      <div class="why-choose-card">
+        <span class="why-choose-card-check">&#10004;</span>
+        <div>
+          <p class="why-choose-card-title">Beginner-Friendly Approach</p>
+          <p class="why-choose-card-desc">No prior experience needed — we guide you from basics to advanced</p>
+        </div>
+      </div>
+
+      <div class="why-choose-card">
+        <span class="why-choose-card-check">&#10004;</span>
+        <div>
+          <p class="why-choose-card-title">Business-Oriented Guidance</p>
+          <p class="why-choose-card-desc">Learn not just skills, but how to take your work into real earning opportunities</p>
+        </div>
+      </div>
+
+      <div class="why-choose-card">
+        <span class="why-choose-card-check">&#10004;</span>
+        <div>
+          <p class="why-choose-card-title">Safe &amp; Secure Ambiance</p>
+          <p class="why-choose-card-desc">CCTV-monitored environment ensuring comfort and safety for all students</p>
+        </div>
+      </div>
+
+      <div class="why-choose-card">
+        <span class="why-choose-card-check">&#10004;</span>
+        <div>
+          <p class="why-choose-card-title">Supportive Learning Environment</p>
+          <p class="why-choose-card-desc">Friendly and encouraging atmosphere that motivates you to grow</p>
+        </div>
+      </div>
+
+      <div class="why-choose-card">
+        <span class="why-choose-card-check">&#10004;</span>
+        <div>
+          <p class="why-choose-card-title">Proven Results</p>
+          <p class="why-choose-card-desc">300+ women trained, many successfully building their own identity</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  var slides = document.querySelectorAll('#heroSlideshow .slideshow-slide');
+  var dots   = document.querySelectorAll('#heroSlideshow .slideshow-dot');
+  var current = 0;
+  var timer;
+
+  function goTo(index) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (index + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  function startTimer() {
+    timer = setInterval(function () { goTo(current + 1); }, 4000);
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    startTimer();
+  }
+
+  document.querySelector('#heroSlideshow .slideshow-arrow-prev').addEventListener('click', function () {
+    goTo(current - 1);
+    resetTimer();
+  });
+
+  document.querySelector('#heroSlideshow .slideshow-arrow-next').addEventListener('click', function () {
+    goTo(current + 1);
+    resetTimer();
+  });
+
+  dots.forEach(function (dot, i) {
+    dot.addEventListener('click', function () {
+      goTo(i);
+      resetTimer();
+    });
+  });
+
+  startTimer();
+})();
+</script>
+
+{% endblock %}

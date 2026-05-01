@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}{{ site.name }} — {{ site.tagline }}{% endblock %}
+
+{% block content %}
+<section>
+  <h1 class="text-[#B01051]">{{ site.name }}</h1>
+  <p>{{ site.tagline }}</p>
+</section>
+
+<section>
+  <h2>About Us</h2>
+  <p>{{ site.about }}</p>
+</section>
+
+<section>
+  <h2>Contact</h2>
+  <p>Phone: {{ site.contact.phone }}</p>
+  <p>Email: {{ site.contact.email }}</p>
+  <p>{{ site.address.street }}, {{ site.address.area }}, {{ site.address.city }} — {{ site.address.pincode }}</p>
+  <p>{{ site.hours.weekdays }}</p>
+  <p>{{ site.hours.sunday }}</p>
+</section>
+{% endblock %}

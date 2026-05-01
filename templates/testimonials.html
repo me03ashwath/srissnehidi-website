@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Testimonials — {{ site.name }}{% endblock %}
+
+{% block content %}
+
+<!-- Page Header -->
+<section class="page-header">
+  <div class="container">
+    <p class="page-header-label">Student Stories</p>
+    <h1 class="page-header-title">What Our Students Say</h1>
+  </div>
+</section>
+
+<!-- Video Testimonials -->
+<section class="testimonials-section">
+  <div class="container">
+    {% if video_testimonials %}
+    <div class="testimonials-grid">
+      {% for t in video_testimonials %}
+      <div class="testimonial-card">
+        {% if t.embed_url %}
+        <div class="testimonial-video-box">
+          <iframe src="{{ t.embed_url }}"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  title="{{ t.student_name }}"></iframe>
+        </div>
+        {% else %}
+        <div class="testimonial-video-unavailable">Video unavailable</div>
+        {% endif %}
+        <div class="testimonial-name-row">{{ t.student_name }}</div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="testimonials-empty">No video testimonials yet. Check back soon!</div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- Text / Review Testimonials -->
+{% if text_testimonials %}
+<section class="testimonials-reviews-section">
+  <div class="container">
+
+    <div class="testimonials-reviews-header">
+      <p class="testimonials-reviews-label">Reviews</p>
+      <h2 class="testimonials-reviews-title">Student Reviews</h2>
+    </div>
+
+    <div class="testimonials-grid">
+      {% for t in text_testimonials %}
+      <div class="review-card">
+        <p class="review-stars">{{ t.star_string }}</p>
+        <p class="review-quote">&ldquo;{{ t.quote }}&rdquo;</p>
+        <p class="review-author">{{ t.student_name }}</p>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+{% endif %}
+
+{% endblock %}
