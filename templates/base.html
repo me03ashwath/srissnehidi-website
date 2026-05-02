@@ -71,6 +71,17 @@
           <p class="footer-tagline">{{ site.tagline }}</p>
         </div>
         <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="{% url 'home' %}" class="footer-link">Home</a></li>
+            <li><a href="{% url 'about' %}" class="footer-link">About Us</a></li>
+            <li><a href="{% url 'courses' %}" class="footer-link">Courses</a></li>
+            <li><a href="{% url 'testimonials' %}" class="footer-link">Testimonials</a></li>
+            <li><a href="{% url 'gallery' %}" class="footer-link">Gallery</a></li>
+            <li><a href="{% url 'lets_connect' %}" class="footer-link">Let's Connect</a></li>
+          </ul>
+        </div>
+        <div>
           <h4 class="footer-heading">Contact</h4>
           <ul class="footer-links">
             <li><a href="tel:{{ site.phone }}" class="footer-link">{{ site.phone }}</a></li>
