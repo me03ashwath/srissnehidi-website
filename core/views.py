@@ -40,7 +40,7 @@ def testimonials(request):
         t.embed_url = _youtube_embed(t.youtube_url)
 
     text_testimonials = list(
-        Testimonial.objects.filter(testimonial_type="text", is_active=True)
+        Testimonial.objects.filter(testimonial_type="text", is_active=True).order_by("order")
     )
     for t in text_testimonials:
         r = t.rating or 0
