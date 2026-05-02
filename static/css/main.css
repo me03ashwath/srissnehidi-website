@@ -1064,7 +1064,7 @@ font-size: 1.25rem;
 }
 
 @media (min-width: 1024px) {
-  .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
+  .testimonials-grid { grid-template-columns: repeat(4, 1fr); }
 }
 
 .testimonial-card {
