@@ -53,9 +53,9 @@
     <div class="testimonials-grid">
       {% for t in text_testimonials %}
       <div class="review-card">
+        <p class="review-author">{{ t.student_name }}</p>
         <p class="review-stars">{{ t.star_string }}</p>
         <p class="review-quote">&ldquo;{{ t.quote }}&rdquo;</p>
-        <p class="review-author">{{ t.student_name }}</p>
       </div>
       {% endfor %}
     </div>

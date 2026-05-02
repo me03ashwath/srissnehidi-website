@@ -89,7 +89,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = (
+    'django.contrib.staticfiles.storage.StaticFilesStorage'
+    if DEBUG else
+    'whitenoise.storage.CompressedManifestStaticFilesStorage'
+)
 
 # Media / Cloudinary
 # python-decouple does not write to os.environ, but the cloudinary SDK
