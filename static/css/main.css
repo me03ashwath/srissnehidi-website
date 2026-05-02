@@ -1159,7 +1159,8 @@ font-size: 1.875rem;
   color: #C2185B;
   font-size: 1.25rem;
   letter-spacing: 0.1em;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #fce4ec;
 }
 
 .review-quote {
@@ -1174,8 +1175,7 @@ font-size: 1.875rem;
   font-weight: 700;
   color: #880E4F;
   font-size: 0.875rem;
-  border-top: 1px solid #fce4ec;
-  padding-top: 1rem;
+  padding-top: 0rem;
 }
 
 /* ============================================================
