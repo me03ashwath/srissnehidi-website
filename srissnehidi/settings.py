@@ -11,7 +11,12 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost').split(',')
-CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', default='').split(',')
+CSRF_TRUSTED_ORIGINS = [
+    'https://srissnehidi.com',
+    'https://www.srissnehidi.com',
+    'https://web-production-ef12e.up.railway.app',
+]
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
