@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}{{ site.name }}{% endblock %}</title>
-  <link rel="stylesheet" href="{% static 'css/main.css' %}?v=2">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}?v=3">
   <link rel="icon" type="image/x-icon" href="{% static 'images/favicon2.ico' %}">
 </head>
 <body>
@@ -69,6 +69,17 @@
         <div>
           <h3 class="footer-brand">{{ site.name }}</h3>
           <p class="footer-tagline">{{ site.tagline }}</p>
+        </div>
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="{% url 'home' %}" class="footer-link">Home</a></li>
+            <li><a href="{% url 'about' %}" class="footer-link">About Us</a></li>
+            <li><a href="{% url 'courses' %}" class="footer-link">Courses</a></li>
+            <li><a href="{% url 'testimonials' %}" class="footer-link">Testimonials</a></li>
+            <li><a href="{% url 'gallery' %}" class="footer-link">Gallery</a></li>
+            <li><a href="{% url 'lets_connect' %}" class="footer-link">Let's Connect</a></li>
+          </ul>
         </div>
         <div>
           <h4 class="footer-heading">Contact</h4>
