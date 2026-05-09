@@ -9,7 +9,7 @@ SITE = {
     ],
     "phone": "+91 9092518668",
     "whatsapp": "919092518668",
-    "address": "2rd Floor, Door no.33, Plot no.5/7, Sarathy Nagar 3rd Street, Puzhuthivakkam, Chennai-600091",
+    "address": "2rd Floor, Plot no.33, Door no.5/7, Sarathy Nagar 3rd Street, Puzhuthivakkam, Chennai-600091",
     "instagram": "https://instagram.com/srissnehidi",
     "facebook": "https://www.facebook.com/people/Sris-Snehidi-Fashion-Institute/100063580346645/#",
     "youtube": "https://www.youtube.com/@srissnehidifashioninstitut9049",
