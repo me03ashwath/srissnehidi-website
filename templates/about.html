@@ -25,7 +25,7 @@
         {% for para in trainer.bio %}<p class="trainer-bio">{{ para }}</p>{% endfor %}
       </div>
 
-      <!-- Right: Photo or Placeholder -->
+      <!-- Right: Photo or Placeholder + Video -->
       <div class="trainer-photo-wrap">
         {% if trainer.photo %}
           <img src="{{ trainer.photo }}" alt="{{ trainer.name }}" class="trainer-photo">
@@ -34,11 +34,15 @@
             <div class="trainer-placeholder-icon">
               <svg fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
-              </svg>
+            </svg>
             </div>
             <p class="trainer-placeholder-label">Trainer Photo</p>
           </div>
         {% endif %}
+
+        <div class="trainer-video">
+          <iframe src="https://www.youtube.com/embed/uBU-fIWSOoo?si=VQuHV5l75X97p6tR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
       </div>
 
     </div>
