@@ -21,11 +21,11 @@ TRAINER = {
     "bio": [
         "Sridevi Saravanan, Founder of Sri's Snehidi Fashion Institute, is a passionate homemaker-turned-entrepreneur with over 25 years of experience in fashion and 11+ years of expertise in training.",
         "She holds an academic background in accounts and has completed various professional courses in fashion, building strong practical expertise in the field. She has also completed M.Sc. in Yoga, which helps her understand the strengths of different women and guide each student with a personalized approach.",
-        "She has successfully trained 300+ women, many of whom have gone on to build their own identity and income in the fashion industry. Known for her patient and encouraging teaching style, she ensures every student learns with clarity and confidence, regardless of their background.",
+        "She has successfully trained 400+ women, many of whom have gone on to build their own identity and income in the fashion industry. Known for her patient and encouraging teaching style, she ensures every student learns with clarity and confidence, regardless of their background.",
         "She is also a proud world record holder in Kalam's Book of Records for the \"Fastest Speller of Antonym Words in Backwords,\" which she achieved in her 40s. With this, she proves that age is not a barrier to learning or to excel.",
         "With a strong vision to empower women through skill-based learning, she focuses on practical training, perfection in finishing, and real-world application. She strongly believes that a friendly and supportive learning environment helps every woman unlock her potential and excel with confidence.",
     ],
-    "photo": "https://res.cloudinary.com/dmvdowhru/image/upload/v1777301921/IMG-20240719-WA0045_1_gq3jyc.jpg"
+    "photo": "https://res.cloudinary.com/dmvdowhru/image/upload/v1778401774/IMG-20240719-WA0045_1_gq3jyc_czxxgu.jpg"
 }
 
 COURSES = {
