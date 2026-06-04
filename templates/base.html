@@ -11,7 +11,9 @@
   <title>{{ meta.title }}</title>
   <meta name="description" content="{{ meta.description }}">
   <meta name="keywords" content="{{ meta.keywords }}">
-  <link rel="canonical" href="{{ meta.url }}">
+  {# Former per-page descriptions, kept as section meta now that the site is one page #}
+  {% for s in meta.sections %}<meta name="description:{{ s.name }}" content="{{ s.description }}">
+  {% endfor %}<link rel="canonical" href="{{ meta.url }}">
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Sris Snehidi Fashion Institute">
@@ -43,7 +45,7 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="{% static 'css/main.css' %}?v=3">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}?v=4">
   <link rel="icon" type="image/x-icon" href="{% static 'images/favicon2.ico' %}">
 </head>
 <body>
@@ -54,21 +56,19 @@
     <div class="navbar-inner">
 
       <!-- Brand -->
-      <a href="{% url 'home' %}">
+      <a href="#home" class="nav-anchor">
         <img class="logo" src="{% static 'images/logo4.png' %}" alt="Sris Snehidi Fashion Institute" style="height: 50px; width: auto;">
       </a>
 
       <!-- Desktop Nav -->
-      {% with n=request.resolver_match.url_name %}
       <div class="nav-links">
-        <a href="{% url 'home' %}"          class="nav-link {% if n == 'home' %}active{% endif %}">Home</a>
-        <a href="{% url 'about' %}"         class="nav-link {% if n == 'about' %}active{% endif %}">About Us</a>
-        <a href="{% url 'courses' %}"       class="nav-link {% if n == 'courses' %}active{% endif %}">Courses</a>
-        <a href="{% url 'testimonials' %}"  class="nav-link {% if n == 'testimonials' %}active{% endif %}">Testimonials</a>
-        <a href="{% url 'gallery' %}"       class="nav-link {% if n == 'gallery' %}active{% endif %}">Gallery</a>
-        <a href="{% url 'lets_connect' %}"  class="nav-link {% if n == 'lets_connect' %}active{% endif %}">Let's Connect</a>
+        <a href="#home"         class="nav-link nav-anchor active">Home</a>
+        <a href="#about"        class="nav-link nav-anchor">About Us</a>
+        <a href="#courses"      class="nav-link nav-anchor">Courses</a>
+        <a href="#testimonials" class="nav-link nav-anchor">Testimonials</a>
+        <a href="#gallery"      class="nav-link nav-anchor">Gallery</a>
+        <a href="#lets-connect" class="nav-link nav-anchor">Let's Connect</a>
       </div>
-      {% endwith %}
 
       <!-- Hamburger -->
       <button id="hamburger" class="hamburger" aria-label="Open menu">
@@ -82,16 +82,14 @@
 
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="mobile-menu">
-    {% with n=request.resolver_match.url_name %}
     <div class="mobile-nav-links">
-      <a href="{% url 'home' %}"         class="mobile-nav-link {% if n == 'home' %}active{% endif %}">Home</a>
-      <a href="{% url 'about' %}"        class="mobile-nav-link {% if n == 'about' %}active{% endif %}">About Us</a>
-      <a href="{% url 'courses' %}"      class="mobile-nav-link {% if n == 'courses' %}active{% endif %}">Courses</a>
-      <a href="{% url 'testimonials' %}" class="mobile-nav-link {% if n == 'testimonials' %}active{% endif %}">Testimonials</a>
-      <a href="{% url 'gallery' %}"      class="mobile-nav-link {% if n == 'gallery' %}active{% endif %}">Gallery</a>
-      <a href="{% url 'lets_connect' %}" class="mobile-nav-link {% if n == 'lets_connect' %}active{% endif %}">Let's Connect</a>
+      <a href="#home"         class="mobile-nav-link nav-anchor active">Home</a>
+      <a href="#about"        class="mobile-nav-link nav-anchor">About Us</a>
+      <a href="#courses"      class="mobile-nav-link nav-anchor">Courses</a>
+      <a href="#testimonials" class="mobile-nav-link nav-anchor">Testimonials</a>
+      <a href="#gallery"      class="mobile-nav-link nav-anchor">Gallery</a>
+      <a href="#lets-connect" class="mobile-nav-link nav-anchor">Let's Connect</a>
     </div>
-    {% endwith %}
   </div>
 </nav>
 
@@ -111,12 +109,12 @@
         <div>
           <h4 class="footer-heading">Quick Links</h4>
           <ul class="footer-links">
-            <li><a href="{% url 'home' %}" class="footer-link">Home</a></li>
-            <li><a href="{% url 'about' %}" class="footer-link">About Us</a></li>
-            <li><a href="{% url 'courses' %}" class="footer-link">Courses</a></li>
-            <li><a href="{% url 'testimonials' %}" class="footer-link">Testimonials</a></li>
-            <li><a href="{% url 'gallery' %}" class="footer-link">Gallery</a></li>
-            <li><a href="{% url 'lets_connect' %}" class="footer-link">Let's Connect</a></li>
+            <li><a href="#home" class="footer-link nav-anchor">Home</a></li>
+            <li><a href="#about" class="footer-link nav-anchor">About Us</a></li>
+            <li><a href="#courses" class="footer-link nav-anchor">Courses</a></li>
+            <li><a href="#testimonials" class="footer-link nav-anchor">Testimonials</a></li>
+            <li><a href="#gallery" class="footer-link nav-anchor">Gallery</a></li>
+            <li><a href="#lets-connect" class="footer-link nav-anchor">Let's Connect</a></li>
           </ul>
         </div>
         <div>
@@ -164,9 +162,64 @@
 </footer>
 
 <script>
-  document.getElementById('hamburger').addEventListener('click', function () {
-    document.getElementById('mobile-menu').classList.toggle('open');
+  // ---- Mobile menu toggle ----
+  var hamburger  = document.getElementById('hamburger');
+  var mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', function () {
+    mobileMenu.classList.toggle('open');
   });
+  // Close the mobile menu after tapping any in-page link.
+  mobileMenu.addEventListener('click', function (e) {
+    if (e.target.closest('.nav-anchor')) {
+      mobileMenu.classList.remove('open');
+    }
+  });
+
+  // ---- Active section highlighting on scroll (IntersectionObserver) ----
+  (function () {
+    var sections = document.querySelectorAll('main section[id]');
+    var navAnchors = document.querySelectorAll('.nav-link.nav-anchor');
+    if (!sections.length || !navAnchors.length) return;
+
+    function setActive(id) {
+      navAnchors.forEach(function (a) {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+      });
+    }
+
+    // Track which sections are currently visible; the topmost one wins.
+    var visible = {};
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        visible[entry.target.id] = entry.isIntersecting;
+      });
+      var topmost = null;
+      sections.forEach(function (sec) {
+        if (visible[sec.id] && topmost === null) topmost = sec.id;
+      });
+      if (topmost) setActive(topmost);
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+
+    sections.forEach(function (sec) { spy.observe(sec); });
+  })();
+
+  // ---- Scroll reveal (IntersectionObserver, vanilla, no libraries) ----
+  (function () {
+    var revealEls = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window) || !revealEls.length) {
+      revealEls.forEach(function (el) { el.classList.add('reveal-visible'); });
+      return;
+    }
+    var revealObserver = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(function (el) { revealObserver.observe(el); });
+  })();
 </script>
 
 <a href="https://wa.me/919092518668" target="_blank" class="whatsapp-float" aria-label="Chat with us on WhatsApp">
