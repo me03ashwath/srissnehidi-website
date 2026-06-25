@@ -10,6 +10,15 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 
+# Railway terminates SSL at their proxy, so Django should NOT redirect itself
+SECURE_SSL_REDIRECT = False  # Let Railway handle HTTPS
+
+# Tell Django to trust Railway's forwarded protocol header
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Only enable HSTS after everything works — leave this at 0 for now
+SECURE_HSTS_SECONDS = 0
+
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost').split(',')
 CSRF_TRUSTED_ORIGINS = [
     'https://srissnehidi.com',
