@@ -1,0 +1,16 @@
+{% extends 'yum/base_yum.html' %}
+
+{% block title %}Delete {{ restaurant.name }} - Yum{% endblock %}
+{% block bottom_bar %}{% endblock %}
+
+{% block content %}
+<div class="confirm-screen">
+    <h2>{{ restaurant.name }}</h2>
+    <p>Are you sure you want to delete this restaurant and all its food items?</p>
+    <form method="post" class="confirm-actions">
+        {% csrf_token %}
+        <a href="{% url 'yum:restaurant_detail' restaurant.pk %}" class="modal-btn-no">No</a>
+        <button type="submit" class="modal-btn-yes">Yes</button>
+    </form>
+</div>
+{% endblock %}

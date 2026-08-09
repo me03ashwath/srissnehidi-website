@@ -1,0 +1,33 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Log in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'yum/css/tokens.css' %}">
+<link rel="stylesheet" href="{% static 'yum/css/yum.css' %}">
+</head>
+<body class="login-body">
+<div class="login-box">
+    <h1 class="yum-wordmark">Yum</h1>
+    <form method="post" class="yum-form">
+        {% csrf_token %}
+        <label class="yum-field">
+            Username
+            {{ form.username }}
+        </label>
+        <label class="yum-field">
+            Password
+            {{ form.password }}
+        </label>
+        {% if form.errors %}<p class="yum-error">Invalid username or password.</p>{% endif %}
+        <input type="hidden" name="next" value="{{ next }}">
+        <button type="submit" class="yum-btn-primary">Log in</button>
+    </form>
+</div>
+</body>
+</html>

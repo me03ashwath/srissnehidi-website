@@ -1,0 +1,16 @@
+{% extends 'yum/base_yum.html' %}
+
+{% block title %}Yum{% endblock %}
+
+{% block content %}
+<div class="restaurant-grid">
+    {% for r in restaurants %}
+    <a class="restaurant-card" href="{% url 'yum:restaurant_detail' r.pk %}">
+        <span class="restaurant-card-name">{{ r.name }}</span>
+        <span class="restaurant-card-location">{{ r.location }}</span>
+    </a>
+    {% empty %}
+    <p class="yum-empty">No restaurants yet. Tap Create New to add one.</p>
+    {% endfor %}
+</div>
+{% endblock %}

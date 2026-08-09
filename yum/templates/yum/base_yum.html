@@ -1,0 +1,39 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>{% block title %}Yum{% endblock %}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'yum/css/tokens.css' %}">
+<link rel="stylesheet" href="{% static 'yum/css/yum.css' %}">
+</head>
+<body>
+<header class="yum-header">
+    <a href="{% url 'yum:home' %}" class="yum-wordmark">Yum</a>
+    <a href="{% url 'yum:search' %}" class="yum-search-icon{% block search_active %}{% endblock %}" aria-label="Search">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+    </a>
+</header>
+
+<main class="yum-main">
+{% block content %}{% endblock %}
+</main>
+
+{% block bottom_bar %}
+<nav class="yum-bottom-bar">
+    <a href="{% url 'yum:randomizer' %}" class="yum-bottom-btn{% block randomize_active %}{% endblock %}">Randomize</a>
+    <a href="{% url 'yum:create_restaurant' %}" class="yum-bottom-btn">Create New</a>
+</nav>
+{% endblock %}
+
+<script src="{% static 'yum/js/yum.js' %}"></script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

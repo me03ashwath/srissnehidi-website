@@ -1,0 +1,22 @@
+{% extends 'yum/base_yum.html' %}
+
+{% block title %}Search - Yum{% endblock %}
+{% block search_active %} active{% endblock %}
+
+{% block content %}
+<div class="pill-toggle{% if mode == 'food' %} is-second{% endif %}" id="mode-toggle" data-input="mode-input">
+    <span class="pill-toggle-fill"></span>
+    <button type="button" class="pill-toggle-option{% if mode == 'restaurant' %} active{% endif %}" data-value="restaurant">Restaurant</button>
+    <button type="button" class="pill-toggle-option{% if mode == 'food' %} active{% endif %}" data-value="food">Food</button>
+</div>
+
+<form method="get" class="search-form">
+    <input type="hidden" name="mode" id="mode-input" value="{{ mode }}">
+    <input type="text" name="q" value="{{ query }}" placeholder="Search {{ mode }}..." class="search-input" autofocus>
+    <button type="submit" class="search-submit" aria-label="Search">Go</button>
+</form>
+
+<div class="restaurant-grid" id="search-results">
+    {% include 'yum/_search_results.html' %}
+</div>
+{% endblock %}

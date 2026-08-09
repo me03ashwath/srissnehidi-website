@@ -1,0 +1,44 @@
+{% extends 'yum/base_yum.html' %}
+
+{% block title %}New Entry - Yum{% endblock %}
+
+{% block content %}
+<div class="new-entry-card">
+    <h2 class="new-entry-title">New Entry</h2>
+    <form method="post" class="yum-form">
+        {% csrf_token %}
+        <label class="yum-field">
+            Restaurant Name
+            {{ form.name }}
+        </label>
+        <label class="yum-field">
+            Location
+            {{ form.location }}
+        </label>
+        <fieldset class="yum-field">
+            <legend>Dayparts</legend>
+            <div class="chip-group">
+                {% for checkbox in form.dayparts %}
+                <span class="chip-option">
+                    {{ checkbox.tag }}
+                    <label for="{{ checkbox.id_for_label }}">{{ checkbox.choice_label }}</label>
+                </span>
+                {% endfor %}
+            </div>
+        </fieldset>
+        <fieldset class="yum-field">
+            <legend>Restaurant Type</legend>
+            <div class="chip-group">
+                {% for radio in form.restaurant_type %}
+                <span class="chip-option">
+                    {{ radio.tag }}
+                    <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+                </span>
+                {% endfor %}
+            </div>
+        </fieldset>
+        {% if form.errors %}<p class="yum-error">Please fill out all fields.</p>{% endif %}
+        <button type="submit" class="yum-btn-primary">Create</button>
+    </form>
+</div>
+{% endblock %}

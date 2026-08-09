@@ -1,0 +1,8 @@
+{% for r in restaurants %}
+<a class="restaurant-card" href="{% url 'yum:restaurant_detail' r.pk %}">
+    <span class="restaurant-card-name">{{ r.name }}</span>
+    <span class="restaurant-card-location">{{ r.location }}</span>
+</a>
+{% empty %}
+{% if query %}<p class="yum-empty">No results.</p>{% endif %}
+{% endfor %}
