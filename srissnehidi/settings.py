@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'import_export',
     # Local
     'core',
+    'yum',
 ]
 
 MIDDLEWARE = [
@@ -120,3 +121,6 @@ CLOUDINARY_STORAGE = {
 }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Yum (personal food journal) — private tool, not linked from the public site.
+LOGIN_URL = 'yum:login'

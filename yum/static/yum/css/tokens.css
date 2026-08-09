@@ -1,0 +1,30 @@
+/* Yum — shared design tokens. Load before yum.css on every Yum template. */
+
+:root {
+    --color-ink: #023047;
+    --color-primary: #219ebc;
+    --color-sky: #8ecae6;
+    --color-amber: #ffb703;
+    --color-ember: #da2a2a;
+
+    /* Dark theme surfaces */
+    --color-bg: #071620;
+    --color-surface: #0f2638;
+    --color-surface-raised: #16324a;
+    --color-border: #28495f;
+    --color-text: #eaf6fb;
+    --color-text-dim: #9bb7c7;
+
+    --radius: 12px;
+    --transition: 160ms ease;
+
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --transition: 0ms;
+    }
+}

@@ -1,0 +1,40 @@
+{% extends 'yum/base_yum.html' %}
+
+{% block title %}Randomizer - Yum{% endblock %}
+{% block randomize_active %} active{% endblock %}
+
+{% block content %}
+<h1 class="randomizer-title">Randomizer</h1>
+<form method="post" class="randomizer-form">
+    {% csrf_token %}
+    <div class="slider-control">
+        <input type="range" min="0" max="2" step="1" value="{{ daypart_index }}" id="daypart-range" class="slider-range">
+        <div class="slider-labels">
+            <span data-value="morning">Morning</span>
+            <span data-value="afternoon">Afternoon</span>
+            <span data-value="evening">Evening</span>
+        </div>
+    </div>
+    <input type="hidden" name="daypart" id="daypart-input" value="{{ daypart }}">
+
+    <div class="pill-toggle{% if restaurant_type == 'meal' %} is-second{% endif %}" id="type-toggle" data-input="type-input">
+        <span class="pill-toggle-fill"></span>
+        <button type="button" class="pill-toggle-option{% if restaurant_type == 'snacks' %} active{% endif %}" data-value="snacks">Snacks</button>
+        <button type="button" class="pill-toggle-option{% if restaurant_type == 'meal' %} active{% endif %}" data-value="meal">Meal</button>
+    </div>
+    <input type="hidden" name="restaurant_type" id="type-input" value="{{ restaurant_type }}">
+
+    {% if no_match %}<p class="yum-empty">No restaurant matches that filter yet.</p>{% endif %}
+
+    <button type="submit" class="yum-btn-primary go-btn">GO</button>
+</form>
+
+{% if result %}
+<div class="restaurant-grid single randomizer-result">
+    <a class="restaurant-card" href="{% url 'yum:restaurant_detail' result.pk %}">
+        <span class="restaurant-card-name">{{ result.name }}</span>
+        <span class="restaurant-card-location">{{ result.location }}</span>
+    </a>
+</div>
+{% endif %}
+{% endblock %}

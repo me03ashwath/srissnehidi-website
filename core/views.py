@@ -95,5 +95,10 @@ def index(request):
 
 
 def robots_txt(request):
-    content = "User-agent: *\nAllow: /\nSitemap: https://srissnehidi.com/sitemap.xml\n"
+    content = (
+        "User-agent: *\n"
+        "Allow: /\n"
+        "Disallow: /yum-x7f2/\n"
+        "Sitemap: https://srissnehidi.com/sitemap.xml\n"
+    )
     return HttpResponse(content, content_type="text/plain")
