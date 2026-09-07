@@ -45,7 +45,7 @@ COURSES = {
             "duration": "3 Months",
             "schedule": "3 Days a week (Mon, Wed & Fri)",
             "timings": "10:30am to 1:00pm",
-            "fee": "Rs 20,000/-",
+            "fee": "Rs 25,000/-",
             "note": "For a detailed explanation of the syllabus and the free add-on sessions included in the course, we warmly invite you to visit our institute.",
             "cta": "Book an Appointment Now",
             "phone": "9092518668",
@@ -66,7 +66,7 @@ COURSES = {
             "duration": "5 Months",
             "schedule": "3 Days a week (Mon, Wed & Fri)",
             "timings": "10:30am to 1:00pm",
-            "fee": "Rs 35,000/-",
+            "fee": "Rs 40,000/-",
             "note": "For a detailed explanation of the syllabus and the free add-on sessions included in the course, we warmly invite you to visit our institute.",
             "cta": "Book an Appointment Now",
             "phone": "9092518668",
@@ -145,12 +145,12 @@ COURSES = {
     "upcoming": [
         {
             "name": "Basic Fashion Designing",
-            "batch": "June 2026 Batch",
+            "batch": "November 2026 Batch",
             "offers": ["Early Bird Offer", "Akshayatritiya Offer"],
         },
         {
             "name": "Fashion Designing",
-            "batch": "June 2026 Batch",
+            "batch": "November 2026 Batch",
             "offers": ["Early Bird Offer", "Akshayatritiya Offer"],
         },
         {
