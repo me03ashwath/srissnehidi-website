@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     initPanelEditing();
+    initInlineEditing();
     initDeleteModal();
     initAddItemForms();
     initPillToggles();
@@ -15,6 +16,7 @@ function initPanelEditing() {
         var lastTouchEnd = 0;
 
         panel.addEventListener('dblclick', function (e) {
+            if (e.target.closest('.panel-item, form, button, input, select')) return;
             e.stopPropagation();
             togglePanelEdit(panel);
         });
@@ -34,6 +36,43 @@ function initPanelEditing() {
         document.querySelectorAll('.panel.editing').forEach(function (panel) {
             if (!e.target.closest('.panel')) {
                 panel.classList.remove('editing');
+            }
+        });
+    });
+}
+
+function initInlineEditing() {
+    var heading = document.querySelector('.restaurant-heading');
+    if (heading) {
+        var title = heading.querySelector('.restaurant-title');
+        var form = heading.querySelector('.restaurant-edit-form');
+        title.addEventListener('dblclick', function () {
+            heading.classList.add('is-editing');
+            var input = form.querySelector('input[name="name"]');
+            input.focus();
+            input.select();
+        });
+    }
+
+    document.querySelectorAll('.panel-item').forEach(function (item) {
+        var name = item.querySelector('.panel-item-name');
+        var form = item.querySelector('.food-item-edit-form');
+        name.addEventListener('dblclick', function (e) {
+            e.stopPropagation();
+            item.classList.add('is-editing');
+            var input = form.querySelector('input[name="name"]');
+            input.focus();
+            input.select();
+        });
+    });
+
+    document.querySelectorAll('.cancel-edit').forEach(function (button) {
+        button.addEventListener('click', function () {
+            var container = button.closest('.restaurant-heading, .panel-item');
+            if (container) {
+                var form = container.querySelector('form');
+                if (form) form.reset();
+                container.classList.remove('is-editing');
             }
         });
     });
@@ -103,27 +142,7 @@ function initAddItemForms() {
                 .then(function (resp) { return resp.ok ? resp.json() : null; })
                 .then(function (data) {
                     if (!data) return;
-                    var list = form.closest('.panel-body').querySelector('.panel-items');
-                    var li = document.createElement('li');
-                    li.className = 'panel-item';
-
-                    var nameSpan = document.createElement('span');
-                    nameSpan.className = 'panel-item-name';
-                    nameSpan.textContent = data.name;
-
-                    var delBtn = document.createElement('button');
-                    delBtn.type = 'button';
-                    delBtn.className = 'delete-dot';
-                    delBtn.dataset.itemName = data.name;
-                    delBtn.dataset.itemId = data.id;
-                    delBtn.setAttribute('aria-label', 'Delete ' + data.name);
-
-                    li.appendChild(nameSpan);
-                    li.appendChild(delBtn);
-                    list.appendChild(li);
-
-                    input.value = '';
-                    input.focus();
+                    window.location.reload();
                 });
         });
     });

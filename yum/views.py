@@ -11,7 +11,7 @@ def _is_ajax(request):
     return request.headers.get('x-requested-with') == 'XMLHttpRequest'
 
 from .decorators import yum_required
-from .forms import RestaurantForm
+from .forms import FoodItemForm, RestaurantDetailsForm, RestaurantForm
 from .models import FoodItem, Restaurant
 
 
@@ -68,7 +68,19 @@ def restaurant_detail(request, pk):
     return render(request, 'yum/restaurant_detail.html', {
         'restaurant': restaurant,
         'panels': _panels(restaurant),
+        'food_categories': FoodItem.CATEGORY_CHOICES,
+        'restaurant_form': RestaurantDetailsForm(instance=restaurant),
     })
+
+
+@yum_required
+@require_POST
+def update_restaurant(request, pk):
+    restaurant = get_object_or_404(Restaurant, pk=pk)
+    form = RestaurantDetailsForm(request.POST, instance=restaurant)
+    if form.is_valid():
+        form.save()
+    return redirect('yum:restaurant_detail', pk=restaurant.pk)
 
 
 @yum_required
@@ -88,6 +100,17 @@ def add_food_item(request, pk):
             return JsonResponse({'id': item.id, 'name': item.name, 'category': item.category})
         return JsonResponse({'error': 'invalid'}, status=400)
 
+    return redirect('yum:restaurant_detail', pk=restaurant.pk)
+
+
+@yum_required
+@require_POST
+def update_food_item(request, pk, item_pk):
+    restaurant = get_object_or_404(Restaurant, pk=pk)
+    item = get_object_or_404(FoodItem, pk=item_pk, restaurant=restaurant)
+    form = FoodItemForm(request.POST, instance=item)
+    if form.is_valid():
+        form.save()
     return redirect('yum:restaurant_detail', pk=restaurant.pk)
 
 

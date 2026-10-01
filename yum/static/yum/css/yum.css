@@ -400,6 +400,19 @@ fieldset.yum-field legend {
     font-weight: 700;
 }
 
+.restaurant-title[title], .panel-item-name[title] { cursor: text; }
+.restaurant-edit-form { display: none; max-width: 420px; margin: 0 auto 12px; }
+.restaurant-heading.is-editing .restaurant-title { display: none; }
+.restaurant-heading.is-editing .restaurant-edit-form { display: grid; gap: 10px; }
+.restaurant-edit-form > label { display: grid; gap: 4px; font-weight: 600; }
+.restaurant-edit-options { margin: 0; }
+.restaurant-edit-form input, .food-item-edit-form input, .food-item-edit-form select {
+    min-width: 0; padding: 7px 9px; border: 2px solid var(--color-border); border-radius: 6px;
+    background: var(--color-surface); color: var(--color-text); font: inherit;
+}
+.edit-actions { display: flex; justify-content: center; gap: 8px; }
+.edit-actions button, .food-item-edit-form button { padding: 6px 10px; border: 1px solid var(--color-border); border-radius: 6px; background: var(--color-surface-raised); color: var(--color-text); font-weight: 600; cursor: pointer; }
+
 .restaurant-badges {
     display: flex;
     justify-content: center;
@@ -482,6 +495,14 @@ fieldset.yum-field legend {
     padding: 5px 0;
     font-family: var(--font-body);
 }
+
+.panel-item-name { cursor: text; }
+.food-item-edit-form { display: none; align-items: center; flex: 1; gap: 6px; margin-left: 8px; }
+.panel-item.is-editing .panel-item-name { display: none; }
+.panel-item.is-editing .food-item-edit-form { display: flex; }
+.food-item-edit-form input { flex: 1; width: 70px; }
+.food-item-edit-form select { width: 82px; }
+.food-item-edit-form button { padding: 6px; }
 
 .delete-dot {
     width: 16px;

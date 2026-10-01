@@ -3,7 +3,31 @@
 {% block title %}{{ restaurant.name }} - Yum{% endblock %}
 
 {% block content %}
-<h1 class="restaurant-title">{{ restaurant.name }} - {{ restaurant.location }}</h1>
+<div class="restaurant-heading" data-edit-url="{% url 'yum:update_restaurant' restaurant.pk %}">
+    <h1 class="restaurant-title" title="Double-click to edit">{{ restaurant.name }} - {{ restaurant.location }}</h1>
+    <form method="post" action="{% url 'yum:update_restaurant' restaurant.pk %}" class="restaurant-edit-form">
+        {% csrf_token %}
+        <label>Name <input type="text" name="name" value="{{ restaurant.name }}" maxlength="200" required></label>
+        <label>Location <input type="text" name="location" value="{{ restaurant.location }}" maxlength="200" required></label>
+        <fieldset class="yum-field restaurant-edit-options">
+            <legend>Timings</legend>
+            <div class="chip-group">
+                {% for checkbox in restaurant_form.dayparts %}
+                <span class="chip-option">{{ checkbox.tag }}<label for="{{ checkbox.id_for_label }}">{{ checkbox.choice_label }}</label></span>
+                {% endfor %}
+            </div>
+        </fieldset>
+        <fieldset class="yum-field restaurant-edit-options">
+            <legend>Food / Snacks</legend>
+            <div class="chip-group">
+                {% for radio in restaurant_form.restaurant_type %}
+                <span class="chip-option">{{ radio.tag }}<label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label></span>
+                {% endfor %}
+            </div>
+        </fieldset>
+        <div class="edit-actions"><button type="submit">Save</button><button type="button" class="cancel-edit">Cancel</button></div>
+    </form>
+</div>
 <div class="restaurant-badges">
     {% for label in restaurant.daypart_labels %}<span class="yum-badge">{{ label }}</span>{% endfor %}
     <span class="yum-badge">{{ restaurant.get_restaurant_type_display }}</span>
@@ -17,7 +41,15 @@
             <ul class="panel-items">
                 {% for item in panel.items %}
                 <li class="panel-item">
-                    <span class="panel-item-name">{{ item.name }}</span>
+                    <span class="panel-item-name" title="Double-click to edit">{{ item.name }}</span>
+                    <form method="post" action="{% url 'yum:update_food_item' restaurant.pk item.pk %}" class="food-item-edit-form">
+                        {% csrf_token %}
+                        <input type="text" name="name" value="{{ item.name }}" maxlength="200" aria-label="Food item name" required>
+                        <select name="category" aria-label="Food item category">
+                            {% for value, label in food_categories %}<option value="{{ value }}"{% if item.category == value %} selected{% endif %}>{{ label }}</option>{% endfor %}
+                        </select>
+                        <button type="submit">Save</button><button type="button" class="cancel-edit">Cancel</button>
+                    </form>
                     <button type="button" class="delete-dot" data-item-name="{{ item.name }}" data-item-id="{{ item.id }}" aria-label="Delete {{ item.name }}"></button>
                 </li>
                 {% endfor %}
