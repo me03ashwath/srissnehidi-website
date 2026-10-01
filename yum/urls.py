@@ -16,7 +16,9 @@ urlpatterns = [
     path('randomize/', views.randomizer, name='randomizer'),
 
     path('restaurant/<int:pk>/', views.restaurant_detail, name='restaurant_detail'),
+    path('restaurant/<int:pk>/update/', views.update_restaurant, name='update_restaurant'),
     path('restaurant/<int:pk>/add-item/', views.add_food_item, name='add_food_item'),
+    path('restaurant/<int:pk>/update-item/<int:item_pk>/', views.update_food_item, name='update_food_item'),
     path('restaurant/<int:pk>/delete-item/<int:item_pk>/', views.delete_food_item, name='delete_food_item'),
     path('restaurant/<int:pk>/delete/', views.delete_restaurant_confirm, name='delete_restaurant_confirm'),
 ]
