@@ -85,7 +85,7 @@ COURSES = {
             "duration": "2 to 6 months (depends on your learning)",
             "schedule": "As per your convenience",
             "timings": "Flexible",
-            "fee": "Rs 8,000/- (Including the Aari kit)",
+            "fee": "Rs 10,000/- (Including the Aari kit)",
             "note": "",
             "cta": "Call & Register Now",
             "phone": "9092518668",
@@ -146,17 +146,17 @@ COURSES = {
         {
             "name": "Basic Fashion Designing",
             "batch": "November 2026 Batch",
-            "offers": ["Early Bird Offer", "Akshayatritiya Offer"],
+            "offers": ["Diwali Offer"],
         },
         {
             "name": "Fashion Designing",
             "batch": "November 2026 Batch",
-            "offers": ["Early Bird Offer", "Akshayatritiya Offer"],
+            "offers": ["Diwali Offer"],
         },
         {
             "name": "Aari Embroidery (Online)",
             "batch": "",
-            "offers": ["Akshayatritiya Offer"],
+            "offers": ["Diwali Offer"],
         },
     ],
     "workshop": [
